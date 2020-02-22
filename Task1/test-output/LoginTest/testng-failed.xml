@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [LoginTest]" parallel="tests">
+  <parameter name="myBrowser" value="firefox"/>
+  <test name="ParallelTest2 Browser Firefox(failed)" parallel="tests">
+    <parameter name="myBrowser" value="firefox"/>
+    <classes>
+      <class name="automationPracticeTests.RegistrationTests">
+        <methods>
+          <include name="validateNewAccount"/>
+        </methods>
+      </class> <!-- automationPracticeTests.RegistrationTests -->
+    </classes>
+  </test> <!-- ParallelTest2 Browser Firefox(failed) -->
+  <test name="ParallelTest1 Browser Chrome(failed)" parallel="tests">
+    <parameter name="myBrowser" value="chrome"/>
+    <classes>
+      <class name="automationPracticeTests.RegistrationTests">
+        <methods>
+          <include name="validateNewAccount"/>
+        </methods>
+      </class> <!-- automationPracticeTests.RegistrationTests -->
+    </classes>
+  </test> <!-- ParallelTest1 Browser Chrome(failed) -->
+  <test name="ParallelTest4 Browser Firefox(failed)" parallel="tests">
+    <parameter name="myBrowser" value="firefox"/>
+    <classes>
+      <class name="automationPracticeTests.CheckOutTests">
+        <methods>
+          <include name="validateCheckoutProcess"/>
+        </methods>
+      </class> <!-- automationPracticeTests.CheckOutTests -->
+    </classes>
+  </test> <!-- ParallelTest4 Browser Firefox(failed) -->
+  <test name="ParallelTest3 Browser Chrome(failed)" parallel="tests">
+    <parameter name="myBrowser" value="chrome"/>
+    <classes>
+      <class name="automationPracticeTests.CheckOutTests">
+        <methods>
+          <include name="validateCheckoutProcess"/>
+        </methods>
+      </class> <!-- automationPracticeTests.CheckOutTests -->
+    </classes>
+  </test> <!-- ParallelTest3 Browser Chrome(failed) -->
+</suite> <!-- Failed suite [LoginTest] -->

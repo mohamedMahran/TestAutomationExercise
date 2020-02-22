@@ -1,0 +1,13 @@
+{
+  "bookingdates": {
+    "checkin": "2020-02-21T23:50:59.133Z",
+    "checkout": "2020-02-21T23:50:59.133Z"
+  },
+  "bookingid": 0,
+  "depositpaid": true,
+  "email": "string",
+  "firstname": "string",
+  "lastname": "string",
+  "phone": "string",
+  "roomid": 0
+}

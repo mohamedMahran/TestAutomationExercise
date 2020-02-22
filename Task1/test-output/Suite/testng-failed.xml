@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
+  <parameter name="browser" value="chrome"/>
+  <listeners>
+    <listener class-name="utilis.TestListener"/>
+  </listeners>
+  <test name="login tests with chrome(failed)" parallel="tests">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="automationPracticeTests.RegistrationTests">
+        <methods>
+          <include name="teardown"/>
+          <include name="teardown"/>
+          <include name="methodLevelSetup"/>
+          <include name="methodLevelSetup"/>
+          <include name="navigate"/>
+          <include name="navigate"/>
+        </methods>
+      </class> <!-- automationPracticeTests.RegistrationTests -->
+      <class name="automationPracticeTests.LoginTests">
+        <methods>
+          <include name="validateValidLogin"/>
+          <include name="teardown"/>
+          <include name="methodLevelSetup"/>
+          <include name="navigate"/>
+        </methods>
+      </class> <!-- automationPracticeTests.LoginTests -->
+      <class name="automationPracticeTests.CheckOutTests">
+        <methods>
+          <include name="teardown"/>
+          <include name="methodLevelSetup"/>
+          <include name="navigate"/>
+        </methods>
+      </class> <!-- automationPracticeTests.CheckOutTests -->
+    </classes>
+  </test> <!-- login tests with chrome(failed) -->
+</suite> <!-- Failed suite [Suite] -->

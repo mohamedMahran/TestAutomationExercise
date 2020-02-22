@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="1" preserve-order="true">
+<listeners>
+		<listener class-name="utilis.TestListener" />
+</listeners>
+  <test name="Registration Browser Chrome">
+  		<parameter name="browser" value="chrome" />
+    	<classes>
+     		 <class name="automationPracticeTests.RegistrationTests"/>
+     	</classes>
+  </test> <!-- Test -->
+  
+  <test name="registration tests with firefox">
+  		<parameter name="browser" value="firefox" />
+    	<classes>
+     		 <class name="automationPracticeTests.RegistrationTests"/>
+     	</classes>
+  </test> <!-- Test -->
+  
+  <test name="login tests with chrome">
+  		<parameter name="browser" value="chrome" />
+    	<classes>
+     		 <class name="automationPracticeTests.LoginTests"/>
+     	</classes>
+  </test> <!-- Test -->
+  
+  	  <test name="checkout tests with chrome">
+  		<parameter name="browser" value="chrome" />
+    	<classes>
+     		 <class name="automationPracticeTests.CheckOutTests"/>
+     	</classes>
+  	</test> <!-- Test -->
+</suite> <!-- Suite -->
