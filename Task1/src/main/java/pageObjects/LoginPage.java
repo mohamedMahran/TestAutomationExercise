@@ -1,17 +1,13 @@
 package pageObjects;
 
 import java.io.IOException;
-import javax.xml.parsers.ParserConfigurationException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.xml.sax.SAXException;
-
-import automationPracticeTests.BaseTest;
 import utilis.Helper;
 
-public class LoginPage extends BaseTest{
+public class LoginPage {
 
 
 
@@ -57,8 +53,8 @@ public class LoginPage extends BaseTest{
 
 	public void enterUserCredentialsAndSignIn() throws IOException {
 		Helper.loadFromPropertiesFile();
-		userEmailAddress.sendKeys(prop.getProperty("existingUserEmail"));
-		password.sendKeys(prop.getProperty("existingUserPassword"));
+		userEmailAddress.sendKeys(BasePage.prop.getProperty("existingUserEmail"));
+		password.sendKeys(BasePage.prop.getProperty("existingUserPassword"));
 		signin.click();
 
 	}
