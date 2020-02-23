@@ -87,7 +87,7 @@ public class CheckOutTests extends BaseTest{
 	@DataProvider(name="checkOut")
 	public Object[][] checkOut() throws ParseException, IOException, java.text.ParseException
 	{
-		String[][] array = ExcelLib.getExcelData("../Test/Data.xlsx", "checkout","enter the name of dress, size  in the checkout test");
+		String[][] array = ExcelLib.getExcelData("../Task1/Data.xlsx", "checkout","enter the name of dress, size  in the checkout test");
 		return array;
 	}
 

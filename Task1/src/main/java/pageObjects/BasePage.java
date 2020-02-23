@@ -25,7 +25,7 @@ public class BasePage {
 
 	public static String loadURL() throws IOException {
 		prop = new Properties();
-		FileInputStream fis = new FileInputStream("../Test/data.properties");
+		FileInputStream fis = new FileInputStream("../Task1/data.properties");
 		prop.load(fis);
 		String url = prop.getProperty("url");
 		return url;
@@ -37,7 +37,7 @@ public class BasePage {
 		String url = loadURL();
 		if (System.getProperty("os.name").contains("Window")) {
 			if (browser.equals("chrome")) {
-				System.setProperty("webdriver.chrome.driver", "../Test/driver/chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", "../Task1/driver/chromedriver.exe");
 				driver = new ChromeDriver();
 				driver.get(url);
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -47,7 +47,7 @@ public class BasePage {
 			} 
 			else if (browser.equals("firefox")) 
 			{
-				System.setProperty("webdriver.gecko.driver", "../Test/driver/geckodriver.exe");
+				System.setProperty("webdriver.gecko.driver", "../Task1/driver/geckodriver.exe");
 				driver = new FirefoxDriver();
 				driver.get(url);
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -58,7 +58,7 @@ public class BasePage {
 			else if (System.getProperty("os.name").contains("Mac")) 
 			{
 				if (browser.equals("chrome")) {
-					System.setProperty("webdriver.chrome.driver", "../Test/driver/chromedriver.exe");
+					System.setProperty("webdriver.chrome.driver", "../Task1/driver/chromedriver.exe");
 					driver = new ChromeDriver();
 					driver.get(url);
 					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -67,7 +67,7 @@ public class BasePage {
 					
 
 				} else if (browser.equals("firefox")) {
-					System.setProperty("webdriver.gecko.driver", "../Test/driver/geckodriver.exe");
+					System.setProperty("webdriver.gecko.driver", "../Task1/driver/geckodriver.exe");
 					driver = new FirefoxDriver();
 					driver.get(url);
 					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

@@ -5,7 +5,7 @@
   <listeners>
     <listener class-name="utilis.TestListener"/>
   </listeners>
-  <test name="login tests with chrome(failed)" parallel="tests">
+  <test name="checkout tests with chrome(failed)" parallel="tests">
     <parameter name="browser" value="chrome"/>
     <classes>
       <class name="automationPracticeTests.RegistrationTests">
@@ -20,7 +20,6 @@
       </class> <!-- automationPracticeTests.RegistrationTests -->
       <class name="automationPracticeTests.LoginTests">
         <methods>
-          <include name="validateValidLogin"/>
           <include name="teardown"/>
           <include name="methodLevelSetup"/>
           <include name="navigate"/>
@@ -28,11 +27,9 @@
       </class> <!-- automationPracticeTests.LoginTests -->
       <class name="automationPracticeTests.CheckOutTests">
         <methods>
-          <include name="teardown"/>
-          <include name="methodLevelSetup"/>
-          <include name="navigate"/>
+          <include name="validateCheckoutProcess"/>
         </methods>
       </class> <!-- automationPracticeTests.CheckOutTests -->
     </classes>
-  </test> <!-- login tests with chrome(failed) -->
+  </test> <!-- checkout tests with chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->
