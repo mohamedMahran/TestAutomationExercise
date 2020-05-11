@@ -1,18 +1,17 @@
 package pageObjects;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import utilis.Helper;
+import Core.BasePage;
+import Core.Helper;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
-
-
-	public WebDriver driver;
-
+	public static Properties prop;
 
 	@FindBy(id = "SubmitCreate")
 	private WebElement submitCreate;
@@ -37,24 +36,17 @@ public class LoginPage {
 
 	public LoginPage(WebDriver driver) 
 	{
-		if (driver != null) {
-
-			PageFactory.initElements(driver, this);
-
-		} else {
-			try {
-				throw new Exception("Driver doesn't instintiated");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	super(driver);
 	}
 
 	public void enterUserCredentialsAndSignIn() throws IOException {
-		Helper.loadFromPropertiesFile();
-		userEmailAddress.sendKeys(BasePage.prop.getProperty("existingUserEmail"));
-		password.sendKeys(BasePage.prop.getProperty("existingUserPassword"));
+		prop = new Properties();
+		FileInputStream fis = new FileInputStream("../Task1/data.properties");
+		prop.load(fis);
+		String emailAddress=prop.getProperty("existingUserEmail");
+		userEmailAddress.sendKeys(emailAddress);
+		String userPassword=prop.getProperty("existingUserPassword");
+		password.sendKeys(userPassword);
 		signin.click();
 
 	}

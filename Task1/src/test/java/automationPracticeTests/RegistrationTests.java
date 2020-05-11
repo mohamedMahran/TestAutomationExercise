@@ -5,20 +5,23 @@ import static org.testng.Assert.assertTrue;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.apache.log4j.Logger;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import com.aventstack.extentreports.Status;
 
-import pageObjects.BasePage;
+import Core.Driver;
+import pageObjects.HomePage;
+import pageObjects.LandingPage;
+import pageObjects.LoginPage;
+import pageObjects.RegsitrationPage;
 import utilis.ExtentTestManager;
 	
 	
 	
 	public class RegistrationTests extends BaseTest {
 
-		Logger log = Logger.getLogger(RegistrationTests.class);
+		
 
 		@Test(dataProvider="accountInformation")
 		public void validateNewAccount(String firstName,String surName,String passwod,String days,String month,String year,String company,
@@ -26,19 +29,28 @@ import utilis.ExtentTestManager;
 			{
 			try
 			{
-
-					homePage.signIn();
-					loginPage.enterNewAccount();
-					loginPage.clickOnCreateAccountButton();
-					registerPage.enterNewAccount(firstName, surName, passwod, days, month, year, company,
+				
+				HomePage homePage = new HomePage(Driver._browser);
+				LoginPage loginPage = new LoginPage(Driver._browser);
+				LandingPage landing = new LandingPage(Driver._browser);
+				RegsitrationPage registerPage = new RegsitrationPage(Driver._browser);
+				
+				homePage.signIn();
+					
+				loginPage.enterNewAccount();
+					
+				loginPage.clickOnCreateAccountButton();
+					
+				registerPage.enterNewAccount(firstName, surName, passwod, days, month, year, company,
 					 Address1, Address2, city, state, postcode, other, phone, mobilePhone, alias);
 					registerPage.submit();
 			
-					assertEquals(landing.getHeaderText(), "MY ACCOUNT");
-					assertEquals(firstName + " " + surName, landing.getFullName());
-					assertTrue(landing.getAccountInfo().contains("Welcome to your account."));
-					assertTrue(landing.doesLogOutAvailable());
-					assertTrue(driver.getCurrentUrl().contains("controller=my-account"));
+					
+				assertEquals(landing.getHeaderText(), "MY ACCOUNT");
+				assertEquals(firstName + " " + surName, landing.getFullName());
+				assertTrue(landing.getAccountInfo().contains("Welcome to your account."));
+				assertTrue(landing.doesLogOutAvailable());
+				assertTrue(Driver.getCurrentUrl().contains("controller=my-account"));
 			}	
 			catch(Exception e)
 				{

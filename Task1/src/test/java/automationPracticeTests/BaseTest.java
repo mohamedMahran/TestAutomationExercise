@@ -1,26 +1,49 @@
 package automationPracticeTests;
+import java.io.IOException;
+import org.apache.log4j.Logger;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pageObjects.HomePage;
-import pageObjects.LandingPage;
-import pageObjects.LoginPage;
-import pageObjects.RegsitrationPage;
-import pageObjects.BasePage;
-public class BaseTest extends BasePage {
+import org.testng.annotations.Parameters;
+import Core.BasePage;
+import Core.Driver;
+import Core.Helper;
+public class BaseTest extends Driver {
 	    
 		
-	    public HomePage homePage;
-	    public LoginPage loginPage;
-	    public LandingPage landing;
-	    RegsitrationPage registerPage ;
-	    
-	    @BeforeMethod
-	    public void methodLevelSetup() {
-	    	
-	    	homePage = new HomePage(BasePage.driver);
-	    	loginPage = new LoginPage(BasePage.driver);
-			landing = new LandingPage(BasePage.driver);
-			registerPage = new RegsitrationPage(BasePage.driver);
+		Logger log = Logger.getLogger(BasePage.class);
+		
+		@BeforeMethod
+		@Parameters("browser")
+		public void navigateTo(String browser) throws IOException {
+			String url = Helper.load("url");
+			if (System.getProperty("os.name").contains("Window")) {
+					
+					_browser= Driver.CreateInstance(browser);
+					Driver.start(url);
+					Driver.implicitWait();
+					Driver.maximize();
+					log.info("entering application URL");
 
-	    }
+				} 
+				else if (System.getProperty("os.name").contains("Mac")) 
+				{
+					_browser= Driver.CreateInstance(browser);
+					Driver.implicitWait();
+					Driver.start(url);
+					Driver.implicitWait();
+					Driver.maximize();
+					log.info("entering application URL");
+					} 
+		}
+
+		@AfterMethod
+		public void teardown(ITestResult result) throws IOException {
+			if (ITestResult.FAILURE == result.getStatus()) {
+				Helper.takeScreenShot(_browser, result.getName());
+			}
+			Driver.stopBrowser();
+
+		}
 
 }

@@ -3,12 +3,11 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class RegsitrationPage  {
-	public WebDriver driver;
-	
+import Core.BasePage;
+
+public class RegsitrationPage extends BasePage{
 	@FindBy(id = "customer_firstname")
 	private WebElement firstname;
 	
@@ -61,22 +60,11 @@ public class RegsitrationPage  {
 	private WebElement submitAccount;
 	
 	
-	public RegsitrationPage(WebDriver driver)
-	{
-		if (driver != null) {
-
-			PageFactory.initElements(driver, this);
-
-		} else {
-			try {
-				throw new Exception("Driver doesn't instintiated");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
 	
+	public RegsitrationPage(WebDriver _browser) {
+		super(_browser);
+	}
+
 	public void enterNewAccount(String firstName,String surName,String passwod,String days,String month,String year,String company,
 			String Address1,String Address2,String city,String state,String postcode,String other,String phone,String mobilePhone,String alias)
 	{

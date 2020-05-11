@@ -5,13 +5,12 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import com.aventstack.extentreports.Status;
-import pageObjects.BasePage;
 
 
 
 
-public class TestListener extends BasePage implements ITestListener {
-
+public class TestListener implements ITestListener {
+	
 
 	public void onStart(ITestContext context) {
 		System.out.println("*** Test Suite " + context.getName() + " started ***");

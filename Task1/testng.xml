@@ -4,26 +4,26 @@
 <listeners>
 		<listener class-name="utilis.TestListener" />
 </listeners>
-  <test name="Registration Browser Chrome">
-  		<parameter name="browser" value="chrome" />
-    	<classes>
-     		 <class name="automationPracticeTests.RegistrationTests"/>
-     	</classes>
-  </test> <!-- Test -->
+<!--   <test name="Registration Browser Chrome"> -->
+<!--   		<parameter name="browser" value="chrome" /> -->
+<!--     	<classes> -->
+<!--      		 <class name="automationPracticeTests.RegistrationTests"/> -->
+<!--      	</classes> -->
+<!--   </test> Test -->
   
-  <test name="registration tests with firefox">
-  		<parameter name="browser" value="firefox" />
-    	<classes>
-     		 <class name="automationPracticeTests.RegistrationTests"/>
-     	</classes>
-  </test> <!-- Test -->
+<!--   <test name="registration tests with firefox"> -->
+<!--   		<parameter name="browser" value="firefox" /> -->
+<!--     	<classes> -->
+<!--      		 <class name="automationPracticeTests.RegistrationTests"/> -->
+<!--      	</classes> -->
+<!--   </test> Test -->
   
-  <test name="login tests with chrome">
-  		<parameter name="browser" value="chrome" />
-    	<classes>
-     		 <class name="automationPracticeTests.LoginTests"/>
-     	</classes>
-  </test> <!-- Test -->
+<!--  	<test name="menu tests with chrome"> -->
+<!--   		<parameter name="browser" value="FireFox" /> -->
+<!--     	<classes> -->
+<!--      		 <class name="automationPracticeTests.MenuTests"/> -->
+<!--      	</classes> -->
+<!--   	</test> Test -->
   
   	  <test name="checkout tests with chrome">
   		<parameter name="browser" value="chrome" />

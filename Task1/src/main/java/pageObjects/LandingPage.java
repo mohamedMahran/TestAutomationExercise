@@ -2,15 +2,16 @@ package pageObjects;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import Core.BasePage;
+import Core.Helper;
 
-public class LandingPage {
-	public WebDriver driver;
+public class LandingPage extends BasePage {
+	
 	
 	@FindBy(className = "account")
 	private WebElement fullname;
@@ -27,8 +28,11 @@ public class LandingPage {
 	@FindBy(id="add_to_cart")
 	private WebElement addToCart;
 	
-	@FindBy(css="#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium ")
-	private WebElement chckOut1;
+	@FindBy(xpath="//a[@title='Proceed to checkout']")
+	private WebElement _proceedToCheckOut;
+	
+	@FindBy(xpath="//p//a[@title='Proceed to checkout']")
+	private WebElement _proceed;
 	
 	@FindBy(css=" p > button")
 	private WebElement checkOut;
@@ -50,33 +54,40 @@ public class LandingPage {
 	
 	@FindBy(id ="group_1")
 	private WebElement size;
+	
+	@FindBy(css="#center_column > ul > li > div > div.right-block > h5 > a")
+	private List<WebElement> productList;
+	
+	@FindBy(css="div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container")
+	private List<WebElement> buttonsCartList;
+
+	@FindBy(xpath="//button[@name='processAddress']")
+	private WebElement processAddress;
 
 	
 	
 	public LandingPage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
 		
-		if (driver != null) {
-
-			PageFactory.initElements(driver, this);
-
-		} else {
-			try {
-				throw new Exception("Driver doesn't instintiated");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		super(driver);
 		
 	}
 	public boolean isCurrentpageLastStepOfOrder()
 	{
-		return lastStep.isDisplayed();
+		try
+		{
+			return lastStep.isDisplayed();
+		}
+		catch(ElementNotVisibleException envm)
+		{
+			System.out.println(envm.getStackTrace());
+		}
+		return false;
 	}
 	public String getTextOfOrderIsComplete()
 	{
-		return orderIsComplete.getText();
+		
+			return orderIsComplete.getText();
+		
 	}
 	public void confirmMyOrder()
 	{
@@ -84,7 +95,11 @@ public class LandingPage {
 	}
 	public void proceedToCheckOut()
 	{
-		chckOut1.click();
+		_proceedToCheckOut.click();
+	}
+	public void proceedToTheCheckOut()
+	{
+		_proceed.click();
 	}
 	public void checkout()
 	{
@@ -98,7 +113,6 @@ public class LandingPage {
 	{
 		return fullname.getText();
 	}
-	
 	public String getHeaderText()
 	{
 		return heading.getText();
@@ -109,49 +123,43 @@ public class LandingPage {
 	}
 	public boolean doesLogOutAvailable()
 	{
-		return logout.isDisplayed();
-	}
-	
-	public  void selectCategoryFromMenu(String category) 
+		try
 		{
-		
-		List<WebElement> menuItems =  BasePage.driver.findElements(By.cssSelector("#block_top_menu > ul > li  > a"));
-
-		for (WebElement menu : menuItems) {
-
-			if (category.equalsIgnoreCase(menu.getText()))
-
-				menu.click();
-				break;
+			return logout.isDisplayed();	
 		}
-
+		catch(ElementNotVisibleException envm)
+		{
+			System.out.println(envm.getStackTrace());
+		}
+		return false;
 	}
 	public void clickOnProduct(String item) {
 		// TODO Auto-generated method stub
-		List<WebElement> products =  BasePage.driver.findElements(By.cssSelector("#center_column > ul > li > div > div.right-block > h5 > a"));
+		List<WebElement> products =  productList;
 
 		for (WebElement product : products) {
 
-			if (item.equals(product.getText()))
+			if (item.equals(product.getAttribute("title")))
 
 				product.click();
 				break;
 		}
 	}
-	
 	public void clickOn(String button) {
 		// TODO Auto-generated method stub
-		List<WebElement> buttons =  BasePage.driver.findElements(By.cssSelector("div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container"));
-
-		for (WebElement btn : buttons) {
-
-			if (button.contains(btn.getText()))
-
-				btn.click();
-				break;
+		//Helper.wait_Till_Visibility_of_List_Element(this.buttonsCartList, 5);
+		try
+		{
+		Helper.clickOn(this.buttonsCartList, button);
 		}
+		catch(Exception ex)
+		{
+			System.out.println(ex.getStackTrace());
+		}
+		
 	}
-
+	
+	
 	public void clickByTermOfService() {
 		// TODO Auto-generated method stub
 		this.termOfConditionCheckBox.click();
@@ -165,5 +173,9 @@ public class LandingPage {
 		Select sizeList = new Select(this.size);
         sizeList.selectByVisibleText(requiredSize);
 		
+	}
+	public void processAddress() {
+		// TODO Auto-generated method stub
+		this.processAddress.click();
 	}
 }

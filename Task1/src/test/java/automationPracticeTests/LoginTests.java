@@ -13,14 +13,24 @@ import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import com.aventstack.extentreports.Status;
 
+import Core.Driver;
+import pageObjects.HomePage;
+import pageObjects.LandingPage;
+import pageObjects.LoginPage;
 import utilis.ExtentTestManager;
 	public class LoginTests extends BaseTest {
-		Logger log = Logger.getLogger(LoginTests.class);
-	
+		
+
 		@Test
 		public void validateValidLogin() throws IOException, ParserConfigurationException, SAXException {
 			try
 			{
+
+				Logger log = Logger.getLogger(LoginTests.class);
+				HomePage homePage = new HomePage(Driver._browser);
+				LoginPage loginPage = new LoginPage(Driver._browser);
+				LandingPage landing = new LandingPage(Driver._browser);
+				
 				log.info(
 					"****************************** Starting test cases execution  *****************************************");
 			// one is inheritance
