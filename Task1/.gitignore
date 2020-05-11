@@ -2,4 +2,4 @@
 /target/
 /FailedTestScreenshots/
 /TestReport
-.log.
+application.log
