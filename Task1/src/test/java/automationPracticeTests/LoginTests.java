@@ -4,50 +4,49 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
-
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import com.aventstack.extentreports.Status;
 
-import Core.Driver;
-import pageObjects.HomePage;
-import pageObjects.LandingPage;
-import pageObjects.LoginPage;
+import core.WebDriverFacade;
+import pages.HomePage;
+import pages.LandingPage;
+import pages.LoginPage;
 import utilis.ExtentTestManager;
 	public class LoginTests extends BaseTest {
 		
-
+		//WebDriver webDriver = WebDriverFacade.getWebDriver();
 		@Test
 		public void validateValidLogin() throws IOException, ParserConfigurationException, SAXException {
 			try
 			{
 
 				Logger log = Logger.getLogger(LoginTests.class);
-				HomePage homePage = new HomePage(Driver._browser);
-				LoginPage loginPage = new LoginPage(Driver._browser);
-				LandingPage landing = new LandingPage(Driver._browser);
+				HomePage homePage = new HomePage(webDriver);
+				LoginPage loginPage = new LoginPage(webDriver);
+				LandingPage landing = new LandingPage(webDriver);
 				
 				log.info(
 					"****************************** Starting test cases execution  *****************************************");
-			// one is inheritance
-			// creating object to that class and invoke methods of it
+				// one is inheritance
+				// creating object to that class and invoke methods of it
 			
 				String fullName = "Joe Black";
 		
 			
-			// 2. Click *Sign in* button (in the header)
+				// 2. Click *Sign in* button (in the header)
 				homePage.signIn();
 	
-			/*
-			 * 3. Fill *Email address* in _Already registered_ block Fill *Password*
-			 * in _Already registered_ block Then Click Sign in
-			 */
-			loginPage.enterUserCredentialsAndSignIn();
-			//Assertions
+				/*
+				 * 3. Fill *Email address* in _Already registered_ block Fill *Password*
+				 * in _Already registered_ block Then Click Sign in
+				 */
+				loginPage.enterUserCredentialsAndSignIn();
+				//Assertions
 			
 				// My account page(?controller=my-account) is opened
 				assertEquals("MY ACCOUNT", landing.getHeaderText());

@@ -3,11 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="automationPracticeTests.MenuTests">
+      <class name="automationPracticeTests.CheckOutTests">
         <methods>
-          <include name="testProductItemsCountUnderEachProductOnTheMainMenuAreCorrect"/>
+          <include name="setUp"/>
+          <include name="teardown"/>
+          <include name="validateCheckoutProcess" invocation-numbers="0"/>
         </methods>
-      </class> <!-- automationPracticeTests.MenuTests -->
+      </class> <!-- automationPracticeTests.CheckOutTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

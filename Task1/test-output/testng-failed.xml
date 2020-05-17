@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
-  <parameter name="browser" value="chrome"/>
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <parameter name="browser" value="firefox"/>
   <listeners>
     <listener class-name="utilis.TestListener"/>
   </listeners>
-  <test name="checkout tests with chrome(failed)" parallel="tests">
-    <parameter name="browser" value="chrome"/>
+  <test name="tests scenarios with firefox(failed)">
+    <parameter name="browser" value="firefox"/>
     <classes>
       <class name="automationPracticeTests.CheckOutTests">
         <methods>
+          <include name="setUp"/>
+          <include name="setUp"/>
           <include name="teardown"/>
-          <include name="navigateTo"/>
-          <include name="validateCheckoutProcess" invocation-numbers="0"/>
+          <include name="teardown"/>
+          <include name="validateCheckoutProcess"/>
         </methods>
       </class> <!-- automationPracticeTests.CheckOutTests -->
     </classes>
-  </test> <!-- checkout tests with chrome(failed) -->
+  </test> <!-- tests scenarios with firefox(failed) -->
 </suite> <!-- Failed suite [Suite] -->

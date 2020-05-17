@@ -1,48 +1,38 @@
 package automationPracticeTests;
 import java.io.IOException;
-import org.apache.log4j.Logger;
+
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
-import Core.BasePage;
-import Core.Driver;
-import Core.Helper;
-public class BaseTest extends Driver {
+
+import core.Helper;
+import core.WebDriverFacade;
+public class BaseTest  {
 	    
-		
-		Logger log = Logger.getLogger(BasePage.class);
-		
-		@BeforeMethod
-		@Parameters("browser")
-		public void navigateTo(String browser) throws IOException {
-			String url = Helper.load("url");
-			if (System.getProperty("os.name").contains("Window")) {
-					
-					_browser= Driver.CreateInstance(browser);
-					Driver.start(url);
-					Driver.implicitWait();
-					Driver.maximize();
-					log.info("entering application URL");
 
-				} 
-				else if (System.getProperty("os.name").contains("Mac")) 
-				{
-					_browser= Driver.CreateInstance(browser);
-					Driver.implicitWait();
-					Driver.start(url);
-					Driver.implicitWait();
-					Driver.maximize();
-					log.info("entering application URL");
-					} 
-		}
-
+	public static WebDriverFacade webDriver;
+	 @Parameters("browser")
+	   @BeforeMethod
+	    public void setUp(String browser) {
+	    	String URL = null;
+			try {
+				URL = Helper.load("url");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        webDriver = new WebDriverFacade(browser);
+	        webDriver.start(URL);
+	        webDriver.maximize();
+	    }
 		@AfterMethod
 		public void teardown(ITestResult result) throws IOException {
 			if (ITestResult.FAILURE == result.getStatus()) {
-				Helper.takeScreenShot(_browser, result.getName());
+				Helper.takeScreenShot( WebDriverFacade.driver, result.getName());
 			}
-			Driver.stopBrowser();
+			webDriver.stop();
 
 		}
 

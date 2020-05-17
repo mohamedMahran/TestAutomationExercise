@@ -1,4 +1,4 @@
-package Core;
+package core;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,7 +17,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
@@ -33,18 +32,34 @@ public class Helper {
 		 String email = "hf_challenge_" + timestamp + "@hf" + timestamp.substring(7) + ".com";
 		 return email;
 	}
-	public static void takeScreenShot(WebDriver driver,String result) throws IOException {
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//	public static void takeScreenShot(WebDriver webDriver,String result) throws IOException {
+//		File scrFile =  ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+//		// Now you can do whatever you need to do with it, for example copy
+//		// somewhere
+//		String currentDir = System.getProperty("user.dir");
+//		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+//		try {
+//			
+//			FileUtils.copyFile(scrFile, new File(currentDir + result + timeStamp + ".png"));
+//		} catch (IOException e1) {
+//			e1.printStackTrace();
+//		}
+//	}
+	
+	public static void takeScreenShot(WebDriver webDriver,String result) throws IOException {
+		File scrFile =  ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		// Now you can do whatever you need to do with it, for example copy
 		// somewhere
 		String currentDir = System.getProperty("user.dir");
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		try {
+			
 			FileUtils.copyFile(scrFile, new File(currentDir + result + timeStamp + ".png"));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 	}
+
 	
 	public static void loadFromPropertiesFile() throws IOException {
 		prop = new Properties();
@@ -52,27 +67,16 @@ public class Helper {
 		prop.load(fis);
 	}
 	
-	public static List<String> getDropDownOptionItems(WebElement element) 
-	{
-		Select selectElement = new Select(element);
-		List<WebElement> webElementList = selectElement.getOptions();
-		List<String> listofOptionsValues = new ArrayList<>() ;
-		for (WebElement elem : webElementList) {
-			listofOptionsValues.add(elem.getText());
-		}
-
-		return listofOptionsValues;
-	}
 
 	public static WebElement wait_Till_Visibility_of_Element(By locator, int timeout) {
 		// Thread.Sleep(3);
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		WebDriverWait wait = new WebDriverWait( driver, 30);
+		return (WebElement) wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 	public static WebElement wait_Till_Visibility_of_List_Element(List<WebElement> list, int timeout) {
 		// Thread.Sleep(3);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
-		return wait.until(ExpectedConditions.visibilityOfElementLocated((By) list));
+		return (WebElement) wait.until(ExpectedConditions.visibilityOfElementLocated((By) list));
 	}
 
 	public static void wait_Till_URL_Contains(String urlValidator, int seconds) {
@@ -113,31 +117,32 @@ public class Helper {
 
 	public static void closeNewTabAndSwitchBackToOldOne() {
 		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
-		Driver.stopBrowser();
-		Driver._browser.switchTo().window(tabs.get(0));
+		driver.close();
+		driver.switchTo().window(tabs.get(0));
 	}
 
 	public static void switchToLastTab() {
 		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
-		Driver._browser.switchTo().window(tabs.get(1));
+		driver.switchTo().window(tabs.get(1));
 	}
 
 	public static void acceptAlertPopup()
     {
         try
         {
-        	Driver._browser.switchTo().alert().accept();
+        	driver.switchTo().alert().accept();
         }
         catch (NoAlertPresentException e){
         	
         }
         
     }
-	public static void clickOn(List<WebElement> expectedButtons,String button)
+	public static void clickOn(List<WebElement> _productList,String button)
     {
 			try
 			{
-				List<WebElement> buttons =expectedButtons  ;
+				
+				List<WebElement> buttons =_productList  ;
 
 				for (WebElement btn : buttons)
 				{
@@ -158,10 +163,10 @@ public class Helper {
 		}
 		
     
-	public static List<String> getListOfclassNamesFromListOfElements(List<WebElement> webElements)
+	public static List<String> getListOfclassNamesFromListOfElements(List<WebElement> WebElements)
     {
 		List<String> listOfElements = new ArrayList<>();
-		for(WebElement t : webElements)
+		for(WebElement t : WebElements)
 		{
 			listOfElements.add(t.getAttribute("class"));
 			
@@ -169,10 +174,10 @@ public class Helper {
 	return listOfElements;	
     }
 
-	public static List<String> getListOfonmousemoveattributeFromListOfElements(List<WebElement> webElements)
+	public static List<String> getListOfonmousemoveattributeFromListOfElements(List<WebElement> WebElements)
     {
 		List<String> listOfOnMousemOveAttribute = new ArrayList<>();
-		for(WebElement t : webElements)
+		for(WebElement t : WebElements)
 		{
 			listOfOnMousemOveAttribute.add(t.getAttribute("onmousemove"));
 			
@@ -180,10 +185,10 @@ public class Helper {
         return listOfOnMousemOveAttribute;
     }
 
-	public static List<String> Get_ListOfStyleAttribute_from_ListOfElements(List<WebElement> webElements)
+	public static List<String> Get_ListOfStyleAttribute_from_ListOfElements(List<WebElement> WebElements)
     {
 		List<String> listOfStyleAttributes = new ArrayList<>();
-		for(WebElement t : webElements)
+		for(WebElement t : WebElements)
 		{
 			listOfStyleAttributes.add(t.getAttribute("style"));
 			
@@ -204,7 +209,7 @@ public class Helper {
     }
 
 	public static void HoverOn(WebElement element) throws InterruptedException {
-		Actions builder = new Actions(Driver._browser);
+		Actions builder = new Actions(driver);
 		builder.moveToElement(element).perform();
 		Thread.sleep(500);
 		
