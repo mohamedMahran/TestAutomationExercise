@@ -8,16 +8,58 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-public class NullWebElement implements WebElement {
 
+import com.aventstack.extentreports.Status;
+
+import utilis.ExtentTestManager;
+public class NullWebElement implements WebElement {
+	
+/*  Null object implements given interface and its methods are doing nothing.This makes the null object more predictable. 
+    You can safely invoke methods on the null object without the threat of a NullRefferenceException to break your application.
+    This pattern is very well combined with singleton pattern where a null object is actually a singleton. 
+    In this case, you can check for reference or equality.
+    
+    I’m going to give example where Singleton is used along with Null object pattern. 
+    NullWebElement implements IWebElement interface. 
+    So it must implement all methods and properties defined by the interface. 
+    This is done on lines 50 to 129.
+    
+    Properties are returning some values, but not null! Methods are doing nothing. 
+    
+    From line 35 to 38 is the Singleton definition. 
+    If Singleton is an object you have defined then it should have a private constructor so no one is able to instantiate it. 
+    
+    There is a private field which actually holds the reference to the singleton. 
+    NULL is a property which instantiates the singleton 
+    if not already instantiated and returns it.
+  */
+	
 	    private NullWebElement() {
 	    }
 
 	    private static NullWebElement instance;
 
+	    public static NullWebElement getNull(By element) {
+	        if (instance == null) {
+	            instance = new NullWebElement();
+	        }
+	        else 
+	        {
+	        	
+	    		ExtentTestManager.getTest().log(Status.FAIL,"Please Note " + "Error in the Element "+ element.toString());
+	    		
+	        }
+	        return instance;
+	    }
 	    public static NullWebElement getNull() {
 	        if (instance == null) {
 	            instance = new NullWebElement();
+	        }
+	        else 
+	        {
+	        	
+	    		ExtentTestManager.getTest().log(Status.FAIL,"Element is null ");
+	    		
 	        }
 	        return instance;
 	    }
@@ -77,7 +119,7 @@ public class NullWebElement implements WebElement {
 
 	    @Override
 	    public WebElement findElement(By by) {
-	        return NullWebElement.getNull();
+	        return NullWebElement.getNull(by);
 	    }
 
 	    @Override

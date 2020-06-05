@@ -7,13 +7,17 @@
    <test name="test checkout scenarios with chrome">
   		<parameter name="browser" value="chrome" />
     	<classes>
-     		 <class name="automationPracticeTests.CheckOutTests"/>
+       		 <class name="org.tests.CheckOutTests"/>   
+       		 <class name="org.tests.MenuTests"/>    
+			 <class name="org.tests.ProductTests"/> 
+			 <class name="org.tests.LoginTests"/>  
+<!-- 			 <class name="org.tests.RegistrationTests"/>   -->
      	</classes>
   </test> <!-- Test -->   	
-  <test name="tests scenarios with firefox">
-  		<parameter name="browser" value="firefox" />
-    	<classes>
-     		 <class name="automationPracticeTests.CheckOutTests"/>
-     	</classes>
- </test> <!-- Test -->
+   <test name="tests scenarios with firefox"> 
+   		<parameter name="browser" value="firefox" /> 
+    	<classes> 
+     		 
+      	</classes> 
+ 	</test> <!-- Test -->
 </suite> <!-- Suite -->

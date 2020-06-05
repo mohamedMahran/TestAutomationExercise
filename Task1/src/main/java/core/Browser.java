@@ -9,9 +9,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public enum Browser {
-    FIREFOX("gecko", FirefoxDriver::new),
-    CHROME("chrome", ChromeDriver::new),
-    IE("ie", InternetExplorerDriver::new);
+    FIREFOX("gecko", FirefoxDriver::new),//  Creates a new FirefoxDriver instance
+    CHROME("chrome", ChromeDriver::new),//   Creates a new ChromeDriver instance
+    IE("ie", InternetExplorerDriver::new);// Creates a new InternetExplorerDriver instance
 
     private String name;
     private Supplier<WebDriver> driverSupplier;
@@ -24,7 +24,7 @@ public enum Browser {
     public String getName() {
         return name;
     }
-
+  //return a new driver
     public WebDriver getDriver() {
         return driverSupplier.get();
     }

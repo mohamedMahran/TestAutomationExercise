@@ -5,18 +5,16 @@
   <listeners>
     <listener class-name="utilis.TestListener"/>
   </listeners>
-  <test name="tests scenarios with firefox(failed)">
-    <parameter name="browser" value="firefox"/>
+  <test name="test checkout scenarios with chrome(failed)">
+    <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="automationPracticeTests.CheckOutTests">
+      <class name="automationPracticeTests.ProductTests">
         <methods>
           <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="teardown"/>
-          <include name="teardown"/>
-          <include name="validateCheckoutProcess"/>
+          <include name="testDataSheet"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- automationPracticeTests.CheckOutTests -->
+      </class> <!-- automationPracticeTests.ProductTests -->
     </classes>
-  </test> <!-- tests scenarios with firefox(failed) -->
+  </test> <!-- test checkout scenarios with chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->
