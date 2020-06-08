@@ -33,12 +33,14 @@ public class NullWebElement implements WebElement {
     NULL is a property which instantiates the singleton 
     if not already instantiated and returns it.
   */
+		
 	
 	    private NullWebElement() {
 	    }
+	 
 
 	    private static NullWebElement instance;
-
+	   
 	    public static NullWebElement getNull(By element) {
 	        if (instance == null) {
 	            instance = new NullWebElement();
@@ -63,6 +65,8 @@ public class NullWebElement implements WebElement {
 	        }
 	        return instance;
 	    }
+	    
+	    
 
 	    public static boolean isNull(WebElement element) {
 	        return getNull().equals(element);

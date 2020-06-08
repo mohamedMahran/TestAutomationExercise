@@ -8,13 +8,12 @@
   <test name="test checkout scenarios with chrome(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="automationPracticeTests.ProductTests">
+      <class name="org.tests.CheckOutTests4">
         <methods>
           <include name="setUp"/>
-          <include name="testDataSheet"/>
-          <include name="tearDown"/>
+          <include name="validateCheckoutProcess"/>
         </methods>
-      </class> <!-- automationPracticeTests.ProductTests -->
+      </class> <!-- org.tests.CheckOutTests4 -->
     </classes>
   </test> <!-- test checkout scenarios with chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -7,62 +7,55 @@ import java.util.List;
 import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import core.DriverSingleTone;
 import core.WebDriverFacade;
 
 
 public class Helper {
 	private static Properties prop;
-	
-	
-	
+	private static String browser;
+	private static WebDriver webDriver = DriverSingleTone.getDriver(browser);
 	public static String getNewEmail()
 	{
 		 String timestamp = String.valueOf(new Date().getTime());
 		 //generating random values for email address
-		 String email = "hf_challenge_" + timestamp + "@hf" + timestamp.substring(7) + ".com";
-		 return email;
+		 return  "hf_challenge_" + timestamp + "@hf" + timestamp.substring(7) + ".com";
+		 
 	}
-
-	
 	public static void loadFromPropertiesFile() throws IOException {
 		prop = new Properties();
 		FileInputStream fis = new FileInputStream("../Task1/data.properties");
 		prop.load(fis);
 	}
-	
+	public static WebElement waitTillVisibilityofElement(By locator, int timeout) {
 
-	public static WebElement wait_Till_Visibility_of_Element(By locator, int timeout) {
-		// Thread.Sleep(3);
-		WebDriverWait wait = new WebDriverWait( WebDriverFacade.instance, timeout);
-		return (WebElement) wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		WebDriverWait wait = new WebDriverWait( webDriver, timeout);
+		return  wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
-	public static WebElement wait_Till_Visibility_of_List_Element(List<WebElement> list, int timeout) {
-		// Thread.Sleep(3);
-		WebDriverWait wait = new WebDriverWait(WebDriverFacade.instance, 30);
-		return (WebElement) wait.until(ExpectedConditions.visibilityOfElementLocated((By) list));
-	}
+	public static WebElement waitTillVisibilityOfListElement(List<WebElement> list, int timeout) {
 
-	public static void wait_Till_URL_Contains(String urlValidator, int seconds) {
-		WebDriverWait wait = new WebDriverWait(WebDriverFacade.instance,seconds );
+		WebDriverWait wait = new WebDriverWait(webDriver, timeout);
+		return  wait.until(ExpectedConditions.visibilityOfElementLocated((By) list));
+	}
+	public static void waitTillURLContains(String urlValidator, int seconds) {
+		WebDriverWait wait = new WebDriverWait(webDriver,seconds );
 		wait.until(ExpectedConditions.urlContains(urlValidator));
 	}
-
-	public static void wait_Till_URL_Matches(String urlValidator, int seconds) {
-		WebDriverWait wait = new WebDriverWait(WebDriverFacade.instance, seconds);
+	public static void waitTillURLMatches(String urlValidator, int seconds) {
+		WebDriverWait wait = new WebDriverWait(webDriver, seconds);
 		wait.until(ExpectedConditions.urlMatches(urlValidator));
 	}
-
-	public static void wait_Till_URL_Is(String url,int timeout) {
-		WebDriverWait wait = new WebDriverWait(WebDriverFacade.instance, 30);
+	public static void waitTillURLIs(String url,int timeout) {
+		WebDriverWait wait = new WebDriverWait(webDriver, timeout);
 		wait.until(ExpectedConditions.urlToBe(url));
 	}
-
-	public static String convertListOfStringsToSingleStringArrowSeparated(List<String> list)
+	public static String splitStringByArrow(List<String> list)
     {
 		StringBuilder builder = new StringBuilder();
         for (String item : list)
@@ -71,8 +64,7 @@ public class Helper {
         }
         return builder.toString();
     }
-
-	public static String convertListOfStringsToSingleStringSlashSeparated(List<String> list)
+	public static String splitStringBySlash(List<String> list)
     {
 		StringBuilder builder = new StringBuilder();
         for (String item : list)
@@ -82,36 +74,33 @@ public class Helper {
         }
         return builder.toString();
     }
-
 	public static void closeNewTabAndSwitchBackToOldOne() {
-		ArrayList<String> tabs = new ArrayList<String> (WebDriverFacade.instance.getWindowHandles());
+		ArrayList<String> tabs = new ArrayList<> (webDriver.getWindowHandles());
 		WebDriverFacade.instance.close();
 		WebDriverFacade.instance.switchTo().window(tabs.get(0));
 	}
-
 	public static void switchToLastTab() {
-		ArrayList<String> tabs = new ArrayList<String> (WebDriverFacade.instance.getWindowHandles());
+		ArrayList<String> tabs = new ArrayList<> (webDriver.getWindowHandles());
 		WebDriverFacade.instance.switchTo().window(tabs.get(1));
 	}
-
 	public static void acceptAlertPopup()
     {
         try
         {
-        	WebDriverFacade.instance.switchTo().alert().accept();
+        	webDriver.switchTo().alert().accept();
         }
         catch (NoAlertPresentException e){
         	
         }
         
     }
-	public static void clickOn(List<WebElement> _productList,String button)
+	public static void clickOn(List<WebElement> productList,String button)
     {
 			try
 			{
 				
 				
-				List<WebElement> buttons =_productList  ;
+				List<WebElement> buttons =productList  ;
 
 				for (WebElement btn : buttons)
 				{
@@ -131,34 +120,30 @@ public class Helper {
 				System.out.println(ex.getMessage());
 			}
 		}
-		
-    
-	public static List<String> getListOfclassNamesFromListOfElements(List<WebElement> WebElements)
+	public static List<String> getListOfclassNamesFromListOfElements(List<WebElement> webElements)
     {
 		List<String> listOfElements = new ArrayList<>();
-		for(WebElement t : WebElements)
+		for(WebElement t : webElements)
 		{
 			listOfElements.add(t.getAttribute("class"));
 			
 		}
 	return listOfElements;	
     }
-
-	public static List<String> getListOfonmousemoveattributeFromListOfElements(List<WebElement> WebElements)
+	public static List<String> getListOfonmousemoveattributeFromListOfElements(List<WebElement> webElements)
     {
 		List<String> listOfOnMousemOveAttribute = new ArrayList<>();
-		for(WebElement t : WebElements)
+		for(WebElement t : webElements)
 		{
 			listOfOnMousemOveAttribute.add(t.getAttribute("onmousemove"));
 			
 		}
         return listOfOnMousemOveAttribute;
     }
-
-	public static List<String> Get_ListOfStyleAttribute_from_ListOfElements(List<WebElement> WebElements)
+	public static List<String> getListOfStyleAttributeFromListOfElements(List<WebElement> webElements)
     {
 		List<String> listOfStyleAttributes = new ArrayList<>();
-		for(WebElement t : WebElements)
+		for(WebElement t : webElements)
 		{
 			listOfStyleAttributes.add(t.getAttribute("style"));
 			
@@ -166,7 +151,6 @@ public class Helper {
         return listOfStyleAttributes;
        
     }
-
 	public static List<String> getListOfStringsFromListOfElements(List<WebElement> ilist)
     {
 		List<String> listOfStringsFromListOfElements = new ArrayList<>();
@@ -177,20 +161,17 @@ public class Helper {
 		}
         return listOfStringsFromListOfElements;
     }
-
-	public static void HoverOn(WebElement element) throws InterruptedException {
-		Actions builder = new Actions(WebDriverFacade.instance);
+	public static void hoverOn(WebElement element) throws InterruptedException {
+		Actions builder = new Actions(webDriver);
 		builder.moveToElement(element).perform();
 		Thread.sleep(500);
 		
 	}
-	
-	
 	public static String load(String property) throws IOException {
 		prop = new Properties();
 		FileInputStream fis = new FileInputStream("../Task1/data.properties");
 		prop.load(fis);
-		String url = prop.getProperty("url");
-		return url;
+		return prop.getProperty(property);
+		
 	}
 }

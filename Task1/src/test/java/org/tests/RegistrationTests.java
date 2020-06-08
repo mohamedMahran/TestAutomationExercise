@@ -5,15 +5,16 @@ import static org.testng.Assert.assertTrue;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.pages.Header;
-import org.pages.LandingPage;
-import org.pages.LoginPage;
-import org.pages.RegsitrationPage;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import com.aventstack.extentreports.Status;
 
+import pages.Header;
+import pages.LandingPage;
+
+import pages.RegsitrationPage;
+import pages.login.LoginPage;
 import utilis.ExtentTestManager;
 	
 	
@@ -29,10 +30,10 @@ import utilis.ExtentTestManager;
 			try
 			{
 				
-				Header header = new Header(webDriver);
-				RegsitrationPage  registerPage = new RegsitrationPage(webDriver);
-				LandingPage landing = new LandingPage(webDriver);
-				LoginPage loginPage = new LoginPage(webDriver);
+				Header header = new Header();
+				RegsitrationPage  registerPage = new RegsitrationPage();
+				LandingPage landing = new LandingPage();
+				LoginPage loginPage = new LoginPage();
 				header.signIn();
 				loginPage.enterNewAccount();
 				loginPage.clickOnCreateAccountButton();

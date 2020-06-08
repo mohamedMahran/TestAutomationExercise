@@ -4,12 +4,11 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
-import org.pages.Header;
-import org.pages.LandingPage;
-import org.pages.LoginPage;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
-
+import pages.Header;
+import pages.LandingPage;
+import pages.login.LoginPage;
 import utilis.ExtentTestManager;
 	public class LoginTests extends BaseTest {
 		
@@ -19,9 +18,9 @@ import utilis.ExtentTestManager;
 			try
 			{
 				Logger log = Logger.getLogger(LoginTests.class);
-				LoginPage loginPage = new LoginPage(webDriver);
-				LandingPage landing = new LandingPage(webDriver);
-				Header header = new Header(webDriver);
+				LoginPage loginPage = new LoginPage();
+				LandingPage landing = new LandingPage();
+				Header header = new Header();
 				
 				
 				log.info(
@@ -39,7 +38,9 @@ import utilis.ExtentTestManager;
 				 * 3. Fill *Email address* in _Already registered_ block Fill *Password*
 				 * in _Already registered_ block Then Click Sign in
 				 */
-				loginPage.enterUserCredentialsAndSignIn();
+				loginPage.enterUserEmailAddress()
+						.enterPassword()
+						.signIn();
 				//Assertions
 			
 				// My account page(?controller=my-account) is opened

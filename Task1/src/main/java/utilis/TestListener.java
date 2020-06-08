@@ -13,6 +13,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import com.aventstack.extentreports.Status;
+
+import core.DriverSingleTone;
 import core.WebDriverFacade;
 
 public class TestListener implements ITestListener {
@@ -40,7 +42,7 @@ public class TestListener implements ITestListener {
 	public void onTestFailure(ITestResult result) 
 	{
 	   	String methodName=result.getName();
-	   	String screenshotPath = takeScreenShot(methodName, WebDriverFacade.instance);
+	   	String screenshotPath = takeScreenShot(methodName, DriverSingleTone.instance);
 	   	
 	   	try {
 	   		ExtentTestManager.getTest().log(Status.FAIL, "Test Failed" + " " + result.getThrowable() + " " + 

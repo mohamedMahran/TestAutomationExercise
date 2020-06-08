@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
-import org.pages.MainMenu;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,6 +11,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 
 import bsh.ParseException;
+import pages.MainMenu;
 import utilis.ExcelLib;
 import utilis.ExtentTestManager;
 
@@ -20,7 +20,7 @@ public class MenuTests extends BaseTest {
 	@Test(dataProvider = "menuItems")
 	public void testCountsOfProductListForEachMainProduct(String mainProduct, String actualCount) {
 		try {
-			MainMenu menu = new MainMenu(webDriver);
+			MainMenu menu = new MainMenu();
 			menu.hoverOnTheMainMenu(mainProduct);
 			int expectedCountOfMainProduct = menu.getCountOfProductItemsOf(mainProduct);
 			int actualCountOfMainProduct = Integer.parseInt(actualCount);

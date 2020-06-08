@@ -36,10 +36,13 @@ public class WebDriverFacade    {
     	instance.manage().window().maximize();
     }
 
-    public  void destoryDriver() {
+    public  void destoryDriver() 
+    {
     	if(instance!=null)
+    	{
     		instance.quit();
     		instance=null;
+    	}
     }
     
     public  WebElement findElement(By by) {
@@ -57,7 +60,7 @@ public class WebDriverFacade    {
     }
 	
     public  String getCurrentUrl() {
-		// TODO Auto-generated method stub
+
 		return instance.getCurrentUrl();
 		
 	
