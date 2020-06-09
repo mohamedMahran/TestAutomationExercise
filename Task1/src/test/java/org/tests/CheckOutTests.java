@@ -6,7 +6,6 @@ import pages.login.LoginPage;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
-import bsh.ParseException;
 import pages.header.Header;
 import pages.landing.LandingPage;
 import pages.menu.MainMenu;
@@ -87,7 +86,7 @@ public class CheckOutTests extends BaseTest {
 	}
 
 	@DataProvider(name = "checkOut")
-	public Object[][] checkOut() throws ParseException, IOException, java.text.ParseException {
+	public Object[][] checkOut() throws  IOException {
 		return ExcelLib.getExcelData("../Task1/Data.xlsx", "checkout");
 
 	}

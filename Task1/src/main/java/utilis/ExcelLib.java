@@ -9,13 +9,17 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import bsh.ParseException;
+
 
 public class ExcelLib {
-
+	
+	private ExcelLib()
+	{
+		
+	}
 	public static String[][] getExcelData(String fileName, String sheetName)
-			throws IOException, ParseException, java.text.ParseException {
-
+			throws IOException  {
+		
 		FileInputStream fs = new FileInputStream(fileName);
 		XSSFWorkbook wb = new XSSFWorkbook(fs);
 		XSSFSheet sh = wb.getSheet(sheetName);
@@ -41,7 +45,7 @@ public class ExcelLib {
 				
 			}
 	public static String cellToString(XSSFCell cell) {
-		// TODO Auto-generated method stub
+
 		Object result;
 		switch (cell.getCellType()) {
 
@@ -62,7 +66,7 @@ public class ExcelLib {
 			break;
 
 		default:
-			throw new RuntimeException("Unknown Cell Type");
+			throw new IllegalArgumentException ("Unknown Cell Type");
 		}
 
 		return result.toString();

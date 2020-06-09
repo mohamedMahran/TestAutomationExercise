@@ -8,6 +8,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import com.aventstack.extentreports.Status;
+
+import utilis.ExtentTestManager;
+
 public enum Browser {
     FIREFOX("gecko", FirefoxDriver::new),//  Creates a new FirefoxDriver instance
     CHROME("chrome", ChromeDriver::new),//   Creates a new ChromeDriver instance
@@ -31,11 +35,11 @@ public enum Browser {
 
     public static Browser fromString(String value) {
         for (Browser browser : values()) {
-            if (value != null && value.toLowerCase().equals(browser.getName())) {
+            if (value != null && value.toUpperCase().equalsIgnoreCase(browser.getName())) {
                 return browser;
             }
         }
-        System.out.println("Invalid driver name passed as 'browser' system property. "
+        ExtentTestManager.getTest().log(Status.FAIL,"Invalid driver name passed as 'browser' system property. "
             + "One of: " + Arrays.toString(values()) + " is expected. Defaulting to Firefox.");
         return FIREFOX;
     }

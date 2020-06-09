@@ -2,7 +2,6 @@
 	
 	import java.io.File;
 	import java.util.List;
-	
 	import org.openqa.selenium.By;
 	import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
@@ -12,26 +11,25 @@
 	public class Driver {
 	
 		private static WebDriverWait wait;
-		public static WebDriver instance;
+		private static WebDriver instance=null;
 		private static final String WEB_DRIVER_FOLDER = "webdrivers";
-	
+	 
 	private Driver() 
 	{
 	
 	}
-	
 	public static WebDriver getDriver(String desiredBrowser) {
-		if (instance == null) {
+		if (getInstance() == null) {
 			Browser browser = Browser.fromString(desiredBrowser);// fromString function to return the type of the browser
 			String driverFileName = browser.getName() + "driver.exe";// get the browser name
 			String driverFilePath = driversFolder(new File("").getAbsolutePath());
 			System.setProperty("webdriver." + browser.getName() + ".driver", driverFilePath + driverFileName);
 	
-			instance = browser.getDriver();
-			return instance;
+			setInstance(browser.getDriver());
+			return getInstance();
 		}
 	
-		return instance;
+		return getInstance();
 	}
 	
 	private static String driversFolder(String path) {
@@ -46,7 +44,7 @@
 	
 		public static WebElement findElement(By by) {
 			try {
-				WebDriverWait wait1 = new WebDriverWait(instance, 5);
+				WebDriverWait wait1 = new WebDriverWait(getInstance(), 5);
 				return wait1.until(ExpectedConditions.visibilityOfElementLocated(by));
 			} catch (Exception ex) {
 				return NullWebElement.getNull(by);
@@ -54,27 +52,33 @@
 		}
 	
 		public static List<WebElement> findElements(By by) {
-			WebDriverWait wait = new WebDriverWait(instance, 5);
+			WebDriverWait wait = new WebDriverWait(getInstance(), 5);
 			return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
 		}
 	
 		public static String getCurrentUrl() {
-			return instance.getCurrentUrl();
+			return getInstance().getCurrentUrl();
 		}
 	
 		public static WebDriverWait getWebDriverWait() {
 			if (wait == null) {
 	
-				wait = new WebDriverWait(instance, 5);
+				wait = new WebDriverWait(getInstance(), 5);
 			}
-			return new WebDriverWait(instance, 5);
+			return new WebDriverWait(getInstance(), 5);
 		}
 	
 		public static void destoryDriver() {
-			if (instance != null) {
-				instance.quit();
-				instance = null;
+			if (getInstance() != null) {
+				getInstance().quit();
+				setInstance(null);
 			}
+		}
+		public static WebDriver getInstance() {
+			return instance;
+		}
+		public static void setInstance(WebDriver instance) {
+			Driver.instance = instance;
 		}
 	
 	}

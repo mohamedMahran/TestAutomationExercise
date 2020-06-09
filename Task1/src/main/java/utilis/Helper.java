@@ -17,8 +17,12 @@ import com.aventstack.extentreports.Status;
 import core.Driver;
 
 
-public class Helper {
+public  class Helper {
 	
+	private Helper()
+	{
+		
+	}
 	
 	public static String getNewEmail()
 	{
@@ -27,26 +31,26 @@ public class Helper {
 		 return  "hf_challenge_" + timestamp + "@hf" + timestamp.substring(7) + ".com";
 		 
 	}
-	public static WebElement waitTillVisibilityofElement(By locator, int timeout) {
+	public static WebElement waitElementToBeVisible(By locator, int timeout) {
 
-		WebDriverWait wait = new WebDriverWait( Driver.instance, timeout);
+		WebDriverWait wait = new WebDriverWait( Driver.getInstance(), timeout);
 		return  wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
-	public static WebElement waitTillVisibilityOfListElement(List<WebElement> list, int timeout) {
+	public static WebElement waitElementListToBeVisible(List<WebElement> list, int timeout) {
 
-		WebDriverWait wait = new WebDriverWait(Driver.instance, timeout);
+		WebDriverWait wait = new WebDriverWait(Driver.getInstance(), timeout);
 		return  wait.until(ExpectedConditions.visibilityOfElementLocated((By) list));
 	}
-	public static void waitTillURLContains(String urlValidator, int seconds) {
-		WebDriverWait wait = new WebDriverWait(Driver.instance,seconds );
+	public static void   waitURLToContains(String urlValidator, int seconds) {
+		WebDriverWait wait = new WebDriverWait(Driver.getInstance(),seconds );
 		wait.until(ExpectedConditions.urlContains(urlValidator));
 	}
-	public static void waitTillURLMatches(String urlValidator, int seconds) {
-		WebDriverWait wait = new WebDriverWait(Driver.instance, seconds);
+	public static void   waitURLToMatches(String urlValidator, int seconds) {
+		WebDriverWait wait = new WebDriverWait(Driver.getInstance(), seconds);
 		wait.until(ExpectedConditions.urlMatches(urlValidator));
 	}
-	public static void waitTillURLIs(String url,int timeout) {
-		WebDriverWait wait = new WebDriverWait(Driver.instance, timeout);
+	public static void   waitTillURLIs(String url,int timeout) {
+		WebDriverWait wait = new WebDriverWait(Driver.getInstance(), timeout);
 		wait.until(ExpectedConditions.urlToBe(url));
 	}
 	public static String splitStringByArrow(List<String> list)
@@ -68,27 +72,27 @@ public class Helper {
         }
         return builder.toString();
     }
-	public static void closeNewTabAndSwitchBackToOldOne() {
-		ArrayList<String> tabs = new ArrayList<> (Driver.instance.getWindowHandles());
-		Driver.instance.close();
-		Driver.instance.switchTo().window(tabs.get(0));
+	public static void   closeNewTabAndSwitchBackToOldOne() {
+		ArrayList<String> tabs = new ArrayList<> (Driver.getInstance().getWindowHandles());
+		Driver.getInstance().close();
+		Driver.getInstance().switchTo().window(tabs.get(0));
 	}
-	public static void switchToLastTab() {
-		ArrayList<String> tabs = new ArrayList<> (Driver.instance.getWindowHandles());
-		Driver.instance.switchTo().window(tabs.get(1));
+	public static void   switchToLastTab() {
+		ArrayList<String> tabs = new ArrayList<> (Driver.getInstance().getWindowHandles());
+		Driver.getInstance().switchTo().window(tabs.get(1));
 	}
-	public static void acceptAlertPopup()
+	public static void   acceptAlertPopup()
     {
         try
         {
-        	Driver.instance.switchTo().alert().accept();
+        	Driver.getInstance().switchTo().alert().accept();
         }
         catch (NoAlertPresentException e){
-        	
+        	ExtentTestManager.getTest().log(Status.FAIL, e);
         }
         
     }
-	public static void clickOn(List<WebElement> productList,String button)
+	public static void   clickOn(List<WebElement> productList,String button)
     {
 			try
 			{
@@ -156,7 +160,7 @@ public class Helper {
         return listOfStringsFromListOfElements;
     }
 	public static void hoverOn(WebElement element) throws InterruptedException {
-		Actions builder = new Actions(Driver.instance);
+		Actions builder = new Actions(Driver.getInstance());
 		builder.moveToElement(element).perform();
 		Thread.sleep(500);
 		

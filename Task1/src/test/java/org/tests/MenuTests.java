@@ -7,10 +7,7 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.aventstack.extentreports.Status;
-
-import bsh.ParseException;
 import pages.menu.MainMenu;
 import utilis.ExcelLib;
 import utilis.ExtentTestManager;
@@ -32,7 +29,7 @@ public class MenuTests extends BaseTest {
 	}
 
 	@DataProvider(name = "menuItems")
-	public Object[][] checkOut() throws ParseException, IOException, java.text.ParseException {
+	public Object[][] checkOut() throws  IOException {
 		return ExcelLib.getExcelData("../Task1/Data.xlsx", "menuItems");
 		
 	}

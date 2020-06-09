@@ -35,7 +35,7 @@ public class Product {
 
 	public void addToCart() {
 		Driver.findElement(By.id("add_to_cart")).click();
-		Helper.waitTillVisibilityofElement(By.xpath("//div[@class='button-container']"), 10);
+		Helper.waitElementToBeVisible(By.xpath("//div[@class='button-container']"), 10);
 		
 	}
 

@@ -9,7 +9,10 @@ public class ReadPropertisFile {
 	static File file = new File("../Task1/data.properties");
 	private static Properties prop = new Properties();
 	static FileInputStream fis;
-	
+	private ReadPropertisFile()
+	{
+		
+	}
 	public static String getURL() throws IOException {
 		fis = new FileInputStream(file);
 		prop.load(fis);

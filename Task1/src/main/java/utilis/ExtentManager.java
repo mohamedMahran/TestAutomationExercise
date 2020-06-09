@@ -14,6 +14,10 @@ public class ExtentManager {
     private static String reportFilepath = System.getProperty("user.dir") +fileSeperator+ "TestReport";
     private static String reportFileLocation =  reportFilepath +fileSeperator+ reportFileName;
   
+    private ExtentManager()
+    {
+    	
+    }
  
     public static ExtentReports getInstance() {
         if (extent == null)

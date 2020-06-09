@@ -43,7 +43,7 @@ public class TestListener implements ITestListener {
 	public void onTestFailure(ITestResult result) 
 	{
 	   	String methodName=result.getName();
-	   	String screenshotPath = takeScreenShot(methodName, Driver.instance);
+	   	String screenshotPath = takeScreenShot(methodName, Driver.getInstance());
 	   	
 	   	try {
 	   		ExtentTestManager.getTest().log(Status.FAIL, "Test Failed" + " " + result.getThrowable() + " " + 
@@ -89,4 +89,3 @@ public class TestListener implements ITestListener {
 
 	
 }
-

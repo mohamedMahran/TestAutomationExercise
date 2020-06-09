@@ -7,9 +7,9 @@
    <test name="test checkout scenarios with chrome">
   		<parameter name="browser" value="chrome" />
     	<classes>
-       		 <class name="org.tests.CheckOutTests"/>  
-       		 <class name="org.tests.MenuTests"/>     
-  			 <class name="org.tests.ProductTests"/>   
+<!--        		 <class name="org.tests.CheckOutTests"/>   -->
+<!--        		 <class name="org.tests.MenuTests"/>      -->
+<!--   			 <class name="org.tests.ProductTests"/>    -->
  			 <class name="org.tests.LoginTests"/>     
      	</classes>
   </test> <!-- Test -->   	

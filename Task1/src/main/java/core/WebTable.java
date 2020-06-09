@@ -16,13 +16,13 @@ public class WebTable {
 	}
 	// get the number of rows present
 	public int getRowCount(){
-		int noOfRows = table.findElements(By.tagName("tr")).size() - 1;
-		return noOfRows;
+		return table.findElements(By.tagName("tr")).size() - 1;
+		
 	}
 	// get the number of columns present
 	public int getColumnCount(){
-		int noOfCols = table.findElements(By.xpath("//tr[2]/td")).size();
-		return noOfCols;
+		return table.findElements(By.xpath("//tr[2]/td")).size();
+		
 	}
 	// get the nuber of rows and columns and return it as Map
 	public Map<String, Integer> getTableSize(){
@@ -46,9 +46,14 @@ public class WebTable {
 			return rData;
 		}
 		// get the column data and return as list
-		public List<String> columnData(int columnNumber) throws Exception{
+		public List<String> columnData(int columnNumber) {
 			if(columnNumber == 0){
-				throw new Exception("Column number starts from 1");
+				try {
+					throw new Exception("Column number starts from 1");
+				} catch (Exception e) {
+
+					e.printStackTrace();
+				}
 			}
 			List<WebElement> column = table.findElements(By.xpath("//tr/td["+columnNumber+"]"));
 			List<String> cData = new ArrayList<>();
@@ -92,13 +97,18 @@ public class WebTable {
 	}
 
 	// get the data from a specific cell
-	public String getCellData(int rowNumber, int columnNumber) throws Exception{
+	public String getCellData(int rowNumber, int columnNumber){
 		if(rowNumber == 0){
-			throw new Exception("Row number starts from 1");
+			try {
+				throw new Exception("Row number starts from 1");
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
 		}
 		rowNumber = rowNumber+1;
-		String cellData = table.findElement(By.xpath("//tr["+rowNumber+"]/td["+columnNumber+"]")).getText();
-		return cellData;
+		return table.findElement(By.xpath("//tr["+rowNumber+"]/td["+columnNumber+"]")).getText();
+		
 	}
 }
 

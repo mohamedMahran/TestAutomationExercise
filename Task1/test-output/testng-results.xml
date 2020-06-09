@@ -1,120 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="6" passed="6">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="222496" started-at="2020-06-09T01:35:57Z" finished-at="2020-06-09T01:39:40Z">
+  <suite name="Suite" duration-ms="64132" started-at="2020-06-09T11:07:53Z" finished-at="2020-06-09T11:08:57Z">
     <groups>
     </groups>
-    <test name="test checkout scenarios with chrome" duration-ms="221863" started-at="2020-06-09T01:35:57Z" finished-at="2020-06-09T01:39:39Z">
-      <class name="org.tests.MenuTests">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:org.tests.MenuTests@77c2494c]" name="setUp" is-config="true" duration-ms="7780" started-at="2020-06-09T03:37:56Z" finished-at="2020-06-09T03:38:04Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="goToHome()[pri:0, instance:org.tests.MenuTests@77c2494c]" name="goToHome" is-config="true" duration-ms="6694" started-at="2020-06-09T03:38:04Z" finished-at="2020-06-09T03:38:11Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- goToHome -->
-        <test-method status="PASS" signature="testCountsOfProductListForEachMainProduct(java.lang.String, java.lang.String)[pri:0, instance:org.tests.MenuTests@77c2494c]" name="testCountsOfProductListForEachMainProduct" duration-ms="20170" started-at="2020-06-09T03:38:11Z" data-provider="menuItems" finished-at="2020-06-09T03:38:31Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[WOMEN]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[2]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testCountsOfProductListForEachMainProduct -->
-        <test-method status="PASS" signature="goToHome()[pri:0, instance:org.tests.MenuTests@77c2494c]" name="goToHome" is-config="true" duration-ms="2174" started-at="2020-06-09T03:38:31Z" finished-at="2020-06-09T03:38:33Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- goToHome -->
-        <test-method status="PASS" signature="testCountsOfProductListForEachMainProduct(java.lang.String, java.lang.String)[pri:0, instance:org.tests.MenuTests@77c2494c]" name="testCountsOfProductListForEachMainProduct" duration-ms="3251" started-at="2020-06-09T03:38:33Z" data-provider="menuItems" finished-at="2020-06-09T03:38:37Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[DRESSES]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[3]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testCountsOfProductListForEachMainProduct -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.tests.MenuTests@77c2494c]" name="tearDown" is-config="true" duration-ms="9337" started-at="2020-06-09T03:38:37Z" finished-at="2020-06-09T03:38:46Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- org.tests.MenuTests -->
-      <class name="org.tests.LoginTests">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:org.tests.LoginTests@233795b6]" name="setUp" is-config="true" duration-ms="3766" started-at="2020-06-09T03:39:19Z" finished-at="2020-06-09T03:39:23Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="goToHome()[pri:0, instance:org.tests.LoginTests@233795b6]" name="goToHome" is-config="true" duration-ms="9812" started-at="2020-06-09T03:39:23Z" finished-at="2020-06-09T03:39:33Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- goToHome -->
-        <test-method status="PASS" signature="validateValidLogin()[pri:0, instance:org.tests.LoginTests@233795b6]" name="validateValidLogin" duration-ms="5186" started-at="2020-06-09T03:39:33Z" finished-at="2020-06-09T03:39:38Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateValidLogin -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.tests.LoginTests@233795b6]" name="tearDown" is-config="true" duration-ms="1283" started-at="2020-06-09T03:39:38Z" finished-at="2020-06-09T03:39:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- org.tests.LoginTests -->
-      <class name="org.tests.ProductTests">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:org.tests.ProductTests@f5958c9]" name="setUp" is-config="true" duration-ms="9168" started-at="2020-06-09T03:38:46Z" finished-at="2020-06-09T03:38:55Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="goToHome()[pri:0, instance:org.tests.ProductTests@f5958c9]" name="goToHome" is-config="true" duration-ms="6529" started-at="2020-06-09T03:38:55Z" finished-at="2020-06-09T03:39:02Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- goToHome -->
-        <test-method status="PASS" signature="validateDataSheet()[pri:0, instance:org.tests.ProductTests@f5958c9]" name="validateDataSheet" duration-ms="11173" started-at="2020-06-09T03:39:02Z" finished-at="2020-06-09T03:39:13Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateDataSheet -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.tests.ProductTests@f5958c9]" name="tearDown" is-config="true" duration-ms="6390" started-at="2020-06-09T03:39:13Z" finished-at="2020-06-09T03:39:19Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- org.tests.ProductTests -->
+    <test name="test checkout scenarios with chrome" duration-ms="63574" started-at="2020-06-09T11:07:53Z" finished-at="2020-06-09T11:08:57Z">
       <class name="org.tests.CheckOutTests">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:org.tests.CheckOutTests@477b4cdf]" name="setUp" is-config="true" duration-ms="32982" started-at="2020-06-09T03:35:57Z" finished-at="2020-06-09T03:36:30Z">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:org.tests.CheckOutTests@3701eaf6]" name="setUp" is-config="true" duration-ms="4436" started-at="2020-06-09T13:07:53Z" finished-at="2020-06-09T13:07:58Z">
           <params>
             <param index="0">
               <value>
@@ -125,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="goToHome()[pri:0, instance:org.tests.CheckOutTests@477b4cdf]" name="goToHome" is-config="true" duration-ms="15354" started-at="2020-06-09T03:36:31Z" finished-at="2020-06-09T03:36:47Z">
+        <test-method status="PASS" signature="goToHome()[pri:0, instance:org.tests.CheckOutTests@3701eaf6]" name="goToHome" is-config="true" duration-ms="4671" started-at="2020-06-09T13:07:59Z" finished-at="2020-06-09T13:08:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- goToHome -->
-        <test-method status="PASS" signature="validateCheckoutProcess(java.lang.String, java.lang.String)[pri:0, instance:org.tests.CheckOutTests@477b4cdf]" name="validateCheckoutProcess" duration-ms="29446" started-at="2020-06-09T03:36:47Z" data-provider="checkOut" finished-at="2020-06-09T03:37:16Z">
+        <test-method status="PASS" signature="validateCheckoutProcess(java.lang.String, java.lang.String)[pri:0, instance:org.tests.CheckOutTests@3701eaf6]" name="validateCheckoutProcess" duration-ms="25838" started-at="2020-06-09T13:08:03Z" data-provider="checkOut" finished-at="2020-06-09T13:08:29Z">
           <params>
             <param index="0">
               <value>
@@ -145,11 +38,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateCheckoutProcess -->
-        <test-method status="PASS" signature="goToHome()[pri:0, instance:org.tests.CheckOutTests@477b4cdf]" name="goToHome" is-config="true" duration-ms="1791" started-at="2020-06-09T03:37:16Z" finished-at="2020-06-09T03:37:18Z">
+        <test-method status="PASS" signature="goToHome()[pri:0, instance:org.tests.CheckOutTests@3701eaf6]" name="goToHome" is-config="true" duration-ms="1684" started-at="2020-06-09T13:08:29Z" finished-at="2020-06-09T13:08:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- goToHome -->
-        <test-method status="PASS" signature="validateCheckoutProcess(java.lang.String, java.lang.String)[pri:0, instance:org.tests.CheckOutTests@477b4cdf]" name="validateCheckoutProcess" duration-ms="24946" started-at="2020-06-09T03:37:18Z" data-provider="checkOut" finished-at="2020-06-09T03:37:43Z">
+        <test-method status="PASS" signature="validateCheckoutProcess(java.lang.String, java.lang.String)[pri:0, instance:org.tests.CheckOutTests@3701eaf6]" name="validateCheckoutProcess" duration-ms="25113" started-at="2020-06-09T13:08:31Z" data-provider="checkOut" finished-at="2020-06-09T13:08:56Z">
           <params>
             <param index="0">
               <value>
@@ -165,13 +58,13 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateCheckoutProcess -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.tests.CheckOutTests@477b4cdf]" name="tearDown" is-config="true" duration-ms="13677" started-at="2020-06-09T03:37:43Z" finished-at="2020-06-09T03:37:56Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.tests.CheckOutTests@3701eaf6]" name="tearDown" is-config="true" duration-ms="1000" started-at="2020-06-09T13:08:56Z" finished-at="2020-06-09T13:08:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- org.tests.CheckOutTests -->
     </test> <!-- test checkout scenarios with chrome -->
-    <test name="tests scenarios with firefox" duration-ms="2" started-at="2020-06-09T01:39:40Z" finished-at="2020-06-09T01:39:40Z">
+    <test name="tests scenarios with firefox" duration-ms="2" started-at="2020-06-09T11:08:57Z" finished-at="2020-06-09T11:08:57Z">
     </test> <!-- tests scenarios with firefox -->
   </suite> <!-- Suite -->
 </testng-results>
