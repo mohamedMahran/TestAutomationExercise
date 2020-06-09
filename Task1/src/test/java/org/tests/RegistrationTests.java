@@ -10,10 +10,6 @@ import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import com.aventstack.extentreports.Status;
 
-import pages.Header;
-import pages.LandingPage;
-
-import pages.RegsitrationPage;
 import pages.login.LoginPage;
 import utilis.ExtentTestManager;
 	

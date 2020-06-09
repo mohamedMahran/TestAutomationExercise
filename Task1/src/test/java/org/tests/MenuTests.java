@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 
 import bsh.ParseException;
-import pages.MainMenu;
+import pages.menu.MainMenu;
 import utilis.ExcelLib;
 import utilis.ExtentTestManager;
 

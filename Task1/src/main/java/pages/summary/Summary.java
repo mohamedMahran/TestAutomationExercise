@@ -1,13 +1,15 @@
 package pages.summary;
 
 import org.openqa.selenium.By;
-import core.DriverSingleTone;
+
+import core.Driver;
+
 
 public class Summary {
 	
 	public void proceedToCheckOut()
 	{
-		DriverSingleTone.findElement(By.xpath("//p[@class='cart_navigation clearfix'] //a[@title='Proceed to checkout'] ")).click();
+		Driver.findElement(By.xpath("//p[@class='cart_navigation clearfix'] //a[@title='Proceed to checkout'] ")).click();
 	}
 
 }

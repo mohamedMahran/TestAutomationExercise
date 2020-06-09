@@ -1,18 +1,16 @@
 package org.tests;
 
 import java.io.IOException;
-
 import org.apache.log4j.Logger;
 import pages.login.LoginPage;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.aventstack.extentreports.Status;
 import bsh.ParseException;
-import pages.Header;
-import pages.LandingPage;
-import pages.MainMenu;
-import pages.Product;
+import pages.header.Header;
+import pages.landing.LandingPage;
+import pages.menu.MainMenu;
+import pages.product.Product;
 import pages.order.OrderPage;
 import pages.summary.Summary;
 import utilis.ExcelLib;
@@ -25,9 +23,9 @@ public class CheckOutTests extends BaseTest {
 		try {
 
 			Logger log = Logger.getLogger(CheckOutTests.class);
-			LoginPage loginPage = new LoginPage();
+			LoginPage loginPage = LoginPage.getLoginPage();
 			MainMenu menu = new MainMenu();
-			LandingPage landing = new LandingPage();
+			LandingPage landing = LandingPage.getLandingPage();
 			OrderPage order = OrderPage.getOrderPage();
 			Product product = new Product();
 			Header header = new Header();
@@ -38,16 +36,19 @@ public class CheckOutTests extends BaseTest {
 			header.signIn();
 			ExtentTestManager.getTest().log(Status.INFO, " 1. Log in as existing customer");
 			log.info("2. Click *Women* button in the header");
-			loginPage.enterUserEmailAddress()
-					 .enterPassword()
-					 .signIn();
+			loginPage.step().enterUserEmailAddress()
+					 		.enterPassword()
+					 		.signIn();
 			
 			ExtentTestManager.getTest().log(Status.INFO, " 2. Click *Women* button in the header");		
 			menu.selectCategoryFromMenu("WOMEN");
 			menu.verifyProductListContainsWomanAndDressesAndTshirt();
 			
 			log.info("3. Click the product with name Faded Short Sleeve T-shirts");
-			landing.clickOnProduct(productName);
+			landing.check().fullName("Joe Black")
+			   			   .headerText("WOMEN")
+			   			   .logOutAvailable();
+			landing.step().clickOnProduct(productName);
 			ExtentTestManager.getTest().log(Status.INFO, " 3. Click the product with name Faded Short Sleeve T-shirts");
 			
 			log.info("4. Select Size,Enter Quantity then click add to cart");

@@ -8,12 +8,35 @@
   <test name="test checkout scenarios with chrome(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="org.tests.CheckOutTests4">
+      <class name="org.tests.CheckOutTests">
         <methods>
+          <include name="goToHome"/>
           <include name="setUp"/>
-          <include name="validateCheckoutProcess"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- org.tests.CheckOutTests4 -->
+      </class> <!-- org.tests.CheckOutTests -->
+      <class name="org.tests.LoginTests">
+        <methods>
+          <include name="goToHome"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- org.tests.LoginTests -->
+      <class name="org.tests.MenuTests">
+        <methods>
+          <include name="goToHome"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- org.tests.MenuTests -->
+      <class name="org.tests.ProductTests">
+        <methods>
+          <include name="goToHome"/>
+          <include name="setUp"/>
+          <include name="validateDataSheet"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- org.tests.ProductTests -->
     </classes>
   </test> <!-- test checkout scenarios with chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

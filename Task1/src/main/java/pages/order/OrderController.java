@@ -5,8 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 
 import com.aventstack.extentreports.Status;
-
-import core.DriverSingleTone;
+import core.Driver;
 import utilis.ExtentTestManager;
 import utilis.Helper;
 
@@ -34,30 +33,30 @@ public class OrderController {
 	}
 	public OrderController confirmMyOrder()
 	{
-		DriverSingleTone.findElement(By.cssSelector(confirmMyOrder)).click();
+		Driver.findElement(By.cssSelector(confirmMyOrder)).click();
 		return this;
 	}
 
 	public OrderController proceedToTheCheckOut()
 	{		
-		DriverSingleTone.findElement(By.xpath(proceedToTheCheckOut)).click();
+		Driver.findElement(By.xpath(proceedToTheCheckOut)).click();
 		return this;
 	}
 
 	public OrderController clickByTermOfService() {
 
-		DriverSingleTone.findElement(By.xpath(clickByTermOfService)).click();
-		 return this;
+		Driver.findElement(By.xpath(clickByTermOfService)).click();
+		return this;
 	}
 	
 	public OrderController payByBankWire()
 	{
-		DriverSingleTone.findElement(By.xpath(payByBankWire)).click();
+		Driver.findElement(By.xpath(payByBankWire)).click();
 		return this;
 	}
 	
 	public OrderController processAddress() {
-		DriverSingleTone.findElement(By.xpath(processAddress)).click();
+		Driver.findElement(By.xpath(processAddress)).click();
 		return this;
 	}
 }

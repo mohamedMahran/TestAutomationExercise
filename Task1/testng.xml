@@ -8,9 +8,9 @@
   		<parameter name="browser" value="chrome" />
     	<classes>
        		 <class name="org.tests.CheckOutTests"/>  
-<!--        		 <class name="org.tests.MenuTests"/>     -->
-<!-- 			 <class name="org.tests.ProductTests"/>  -->
-<!-- 			 <class name="org.tests.LoginTests"/>    -->
+       		 <class name="org.tests.MenuTests"/>     
+  			 <class name="org.tests.ProductTests"/>   
+ 			 <class name="org.tests.LoginTests"/>     
      	</classes>
   </test> <!-- Test -->   	
    <test name="tests scenarios with firefox"> 

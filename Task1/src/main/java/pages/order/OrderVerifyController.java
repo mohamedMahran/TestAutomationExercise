@@ -4,8 +4,8 @@ import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.By;
 
+import core.Driver;
 
-import core.DriverSingleTone;
 
 public class OrderVerifyController {
 	
@@ -14,7 +14,7 @@ public class OrderVerifyController {
 	public OrderVerifyController verifyOrderConfirmationPageIsDisplayedSuccessfully()
 	{
 		// Order confirmation page(?controller=order-confirmation) is opened
-			assertTrue(DriverSingleTone.getCurrentUrl().contains("controller=order-confirmation"));
+			assertTrue(Driver.getCurrentUrl().contains("controller=order-confirmation"));
 			return this;
 								
 	}
@@ -22,7 +22,7 @@ public class OrderVerifyController {
 	public OrderVerifyController verifyOrderIsComplete()
 	{
 		// The order is complete.
-		assertTrue(DriverSingleTone.findElement(By.xpath("//*[@class='cheque-indent']/strong")).getText().contains("Your order on My Store is complete."));
+		assertTrue(Driver.findElement(By.xpath("//*[@class='cheque-indent']/strong")).getText().contains("Your order on My Store is complete."));
 		return this;
 
 		
@@ -31,7 +31,7 @@ public class OrderVerifyController {
 	public OrderVerifyController verifyCurrentPageIsLastStepOfOrdering()
 	{
 		// Current page is the last step of ordering
-		assertTrue(DriverSingleTone.findElement(By.xpath("//li[@id='step_end' and @class='step_current last']")).isDisplayed());
+		assertTrue(Driver.findElement(By.xpath("//li[@id='step_end' and @class='step_current last']")).isDisplayed());
 		return this;
 	}
 

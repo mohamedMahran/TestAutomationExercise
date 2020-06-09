@@ -10,30 +10,30 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
-import core.DriverSingleTone;
+import core.Driver;
 import utilis.ReadPropertisFile;
 
 public class BaseTest {
 
-	private static  WebDriver driver=null;
-	static WebDriverWait wait;
-	static String url = null;
+	WebDriver driver;
+	WebDriverWait wait;
+	String url ;
 	static Logger log = Logger.getLogger(BaseTest.class);
 	
 	@Parameters("browser")
 	@BeforeClass
-	public static void setUp(String browser) 
+	public  void setUp(String browser) 
 	{
 
-		driver = DriverSingleTone.getDriver(browser);
+		driver = Driver.getDriver(browser);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		wait=DriverSingleTone.getWebDriverWait();
+		wait=Driver.getWebDriverWait();
 
 	}
 
 	@BeforeMethod()
-	public static void goToHome() {
+	public  void goToHome() {
 		try
 		{
 		url = ReadPropertisFile.getURL();
@@ -48,7 +48,7 @@ public class BaseTest {
 
 	@AfterClass
 	public void tearDown() {
-		DriverSingleTone.destoryDriver();
+		Driver.destoryDriver();
 	}
 
 }

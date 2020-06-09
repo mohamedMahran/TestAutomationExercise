@@ -1,13 +1,11 @@
 package org.tests;
 	
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
-import pages.Header;
-import pages.LandingPage;
+import pages.header.Header;
+import pages.landing.LandingPage;
 import pages.login.LoginPage;
 import utilis.ExtentTestManager;
 	public class LoginTests extends BaseTest {
@@ -18,8 +16,8 @@ import utilis.ExtentTestManager;
 			try
 			{
 				Logger log = Logger.getLogger(LoginTests.class);
-				LoginPage loginPage = new LoginPage();
-				LandingPage landing = new LandingPage();
+				LoginPage loginPage = LoginPage.getLoginPage();
+				LandingPage landing = LandingPage.getLandingPage();
 				Header header = new Header();
 				
 				
@@ -28,7 +26,7 @@ import utilis.ExtentTestManager;
 				// one is inheritance
 				// creating object to that class and invoke methods of it
 			
-				String fullName = "Joe Black";
+				
 		
 			
 				// 2. Click *Sign in* button (in the header)
@@ -38,18 +36,16 @@ import utilis.ExtentTestManager;
 				 * 3. Fill *Email address* in _Already registered_ block Fill *Password*
 				 * in _Already registered_ block Then Click Sign in
 				 */
-				loginPage.enterUserEmailAddress()
-						.enterPassword()
-						.signIn();
+				loginPage.step().enterUserEmailAddress()
+								.enterPassword()
+								.signIn();
 				//Assertions
 			
-				// My account page(?controller=my-account) is opened
-				assertEquals("MY ACCOUNT", landing.getHeaderText());
+				landing.check().fullName("Joe Black")
+				   .headerText("MY ACCOUNT")
+				   .logOutAvailable();
 				
-				// 5. Proper username is shown in the header
-				assertEquals(fullName, landing.getFullName());
-				// 6. Log out action is available*/
-				assertTrue(landing.doesLogOutAvailable());
+
 			log.info("Navigation Bar is displayed");
 			log.info("Test completed");
 			}

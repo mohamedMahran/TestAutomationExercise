@@ -7,20 +7,19 @@ import java.util.List;
 import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import core.DriverSingleTone;
-import core.WebDriverFacade;
+import com.aventstack.extentreports.Status;
+
+import core.Driver;
 
 
 public class Helper {
-	private static Properties prop;
-	private static String browser;
-	private static WebDriver webDriver = DriverSingleTone.getDriver(browser);
+	
+	
 	public static String getNewEmail()
 	{
 		 String timestamp = String.valueOf(new Date().getTime());
@@ -28,31 +27,26 @@ public class Helper {
 		 return  "hf_challenge_" + timestamp + "@hf" + timestamp.substring(7) + ".com";
 		 
 	}
-	public static void loadFromPropertiesFile() throws IOException {
-		prop = new Properties();
-		FileInputStream fis = new FileInputStream("../Task1/data.properties");
-		prop.load(fis);
-	}
 	public static WebElement waitTillVisibilityofElement(By locator, int timeout) {
 
-		WebDriverWait wait = new WebDriverWait( webDriver, timeout);
+		WebDriverWait wait = new WebDriverWait( Driver.instance, timeout);
 		return  wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 	public static WebElement waitTillVisibilityOfListElement(List<WebElement> list, int timeout) {
 
-		WebDriverWait wait = new WebDriverWait(webDriver, timeout);
+		WebDriverWait wait = new WebDriverWait(Driver.instance, timeout);
 		return  wait.until(ExpectedConditions.visibilityOfElementLocated((By) list));
 	}
 	public static void waitTillURLContains(String urlValidator, int seconds) {
-		WebDriverWait wait = new WebDriverWait(webDriver,seconds );
+		WebDriverWait wait = new WebDriverWait(Driver.instance,seconds );
 		wait.until(ExpectedConditions.urlContains(urlValidator));
 	}
 	public static void waitTillURLMatches(String urlValidator, int seconds) {
-		WebDriverWait wait = new WebDriverWait(webDriver, seconds);
+		WebDriverWait wait = new WebDriverWait(Driver.instance, seconds);
 		wait.until(ExpectedConditions.urlMatches(urlValidator));
 	}
 	public static void waitTillURLIs(String url,int timeout) {
-		WebDriverWait wait = new WebDriverWait(webDriver, timeout);
+		WebDriverWait wait = new WebDriverWait(Driver.instance, timeout);
 		wait.until(ExpectedConditions.urlToBe(url));
 	}
 	public static String splitStringByArrow(List<String> list)
@@ -75,19 +69,19 @@ public class Helper {
         return builder.toString();
     }
 	public static void closeNewTabAndSwitchBackToOldOne() {
-		ArrayList<String> tabs = new ArrayList<> (webDriver.getWindowHandles());
-		WebDriverFacade.instance.close();
-		WebDriverFacade.instance.switchTo().window(tabs.get(0));
+		ArrayList<String> tabs = new ArrayList<> (Driver.instance.getWindowHandles());
+		Driver.instance.close();
+		Driver.instance.switchTo().window(tabs.get(0));
 	}
 	public static void switchToLastTab() {
-		ArrayList<String> tabs = new ArrayList<> (webDriver.getWindowHandles());
-		WebDriverFacade.instance.switchTo().window(tabs.get(1));
+		ArrayList<String> tabs = new ArrayList<> (Driver.instance.getWindowHandles());
+		Driver.instance.switchTo().window(tabs.get(1));
 	}
 	public static void acceptAlertPopup()
     {
         try
         {
-        	webDriver.switchTo().alert().accept();
+        	Driver.instance.switchTo().alert().accept();
         }
         catch (NoAlertPresentException e){
         	
@@ -117,7 +111,7 @@ public class Helper {
 			}
 			catch(Exception ex)
 			{
-				System.out.println(ex.getMessage());
+				ExtentTestManager.getTest().log(Status.FAIL, ex.getMessage());
 			}
 		}
 	public static List<String> getListOfclassNamesFromListOfElements(List<WebElement> webElements)
@@ -162,12 +156,13 @@ public class Helper {
         return listOfStringsFromListOfElements;
     }
 	public static void hoverOn(WebElement element) throws InterruptedException {
-		Actions builder = new Actions(webDriver);
+		Actions builder = new Actions(Driver.instance);
 		builder.moveToElement(element).perform();
 		Thread.sleep(500);
 		
 	}
 	public static String load(String property) throws IOException {
+	    Properties prop;
 		prop = new Properties();
 		FileInputStream fis = new FileInputStream("../Task1/data.properties");
 		prop.load(fis);
