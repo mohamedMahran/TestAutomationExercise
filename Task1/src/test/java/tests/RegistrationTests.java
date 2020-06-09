@@ -1,60 +1,59 @@
-package org.tests;
-	
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+package tests;
+
 import java.io.IOException;
-import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.xml.sax.SAXException;
 import com.aventstack.extentreports.Status;
-
+import pages.header.HeaderPage;
+import pages.landing.LandingPage;
 import pages.login.LoginPage;
+import pages.registration.Register;
 import utilis.ExtentTestManager;
-	
-	
-	
-	public class RegistrationTests extends BaseTest {
-		
-		
 
-		@Test(dataProvider="accountInformation")
-		public void validateNewAccount(String firstName,String surName,String passwod,String days,String month,String year,String company,
-				String Address1,String Address2,String city,String state,String postcode,String other,String phone,String mobilePhone,String alias)throws ParserConfigurationException, SAXException, IOException 
-			{
-			try
-			{
-				
-				Header header = new Header();
-				RegsitrationPage  registerPage = new RegsitrationPage();
-				LandingPage landing = new LandingPage();
-				LoginPage loginPage = new LoginPage();
-				header.signIn();
-				loginPage.enterNewAccount();
-				loginPage.clickOnCreateAccountButton();
-				registerPage.enterNewAccount(firstName, surName, passwod, days, month, year, company,
-					 Address1, Address2, city, state, postcode, other, phone, mobilePhone, alias);
-					registerPage.submit();
+public class RegistrationTests extends BaseTest {
 
-				assertEquals(landing.getHeaderText(), "MY ACCOUNT");
-				assertEquals(firstName + " " + surName, landing.getFullName());
-				assertTrue(landing.getAccountInfo().contains("Welcome to your account."));
-				assertTrue(landing.doesLogOutAvailable());
-				assertTrue(webDriver.getCurrentUrl().contains("controller=my-account"));
-			}	
-			catch(Exception e)
-				{
-					ExtentTestManager.getTest().log(Status.INFO, ExceptionUtils.getStackTrace(e));
-				}
+	@Test(dataProvider = "accountInformation")
+	
+	public void validateNewAccount(String firstName, String surName, String passwod,String company, String days, String month,
+			String year,  String address1, String address2, String city, String state, String postcode,
+			String other, String phone, String mobilePhone, String alias)
+			throws  IOException {
+		try {
+			LoginPage loginPage = LoginPage.getLoginPage();
+			HeaderPage header =   HeaderPage.getHeaderPage();
+			LandingPage landing = LandingPage.getLandingPage();
+			Register register= Register.getRegisterPage();
+
+			header.step().signIn();
+			loginPage.step().enterNewAccount();
+			loginPage.step().clickOnCreateAccountButton();
 			
+			register.step().enterPersonalData(firstName, surName, passwod, company)
+						   .selectDates(days,month,year)
+						   .enterAddress(address1, address2, city)
+						   .selectState(state)
+						   .enterContacts(postcode, other, phone, mobilePhone, alias)
+						   .submit();
+			
+			
+			landing.check().headerText("MY ACCOUNT").
+							fullName(firstName + " " + surName).
+							accountInfo("Welcome to your account. Here you can manage all of your personal information and orders.");
+
+		} catch (Exception e) {
+			ExtentTestManager.getTest().log(Status.INFO, ExceptionUtils.getStackTrace(e));
 		}
-		
-		@DataProvider(name="accountInformation")
-		public Object[][] accountInformation()
-		{
-			return new Object[][] {{"Firstname","Lastname","Qwerty","1","10","2000","Company","Qwerty, 123","zxcvb",
-				"Qwerty","Colorado","12345","Qwerty","12345123123","12345123123","hf"}};
-		}
-	
+
 	}
+
+	@DataProvider(name = "accountInformation")
+	public Object[][] accountInformation() {
+		return new Object[][] { { "Firstname", "Lastname", "Qwerty","Company", 
+								   "10","10", "2000",
+								   "Qwerty, 123","zxcvb","1", 
+								   "1", 
+								   "12345", "Qwerty", "12345123123", "12345123123", "hf" } };
+	}
+
+}

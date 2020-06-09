@@ -18,6 +18,7 @@
 	{
 	
 	}
+	
 	public static WebDriver getDriver(String desiredBrowser) {
 		if (getInstance() == null) {
 			Browser browser = Browser.fromString(desiredBrowser);// fromString function to return the type of the browser
@@ -42,7 +43,7 @@
 			return driversFolder(file.getParent());
 		}
 	
-		public static WebElement findElement(By by) {
+	public static WebElement findElement(By by) {
 			try {
 				WebDriverWait wait1 = new WebDriverWait(getInstance(), 5);
 				return wait1.until(ExpectedConditions.visibilityOfElementLocated(by));
@@ -51,16 +52,16 @@
 			}
 		}
 	
-		public static List<WebElement> findElements(By by) {
+	public static List<WebElement> findElements(By by) {
 			WebDriverWait wait = new WebDriverWait(getInstance(), 5);
 			return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
 		}
 	
-		public static String getCurrentUrl() {
+	public static String getCurrentUrl() {
 			return getInstance().getCurrentUrl();
 		}
 	
-		public static WebDriverWait getWebDriverWait() {
+	public static WebDriverWait getWebDriverWait() {
 			if (wait == null) {
 	
 				wait = new WebDriverWait(getInstance(), 5);
@@ -68,16 +69,18 @@
 			return new WebDriverWait(getInstance(), 5);
 		}
 	
-		public static void destoryDriver() {
+	public static void destoryDriver() {
 			if (getInstance() != null) {
 				getInstance().quit();
 				setInstance(null);
 			}
 		}
-		public static WebDriver getInstance() {
+	
+	public static WebDriver getInstance() {
 			return instance;
 		}
-		public static void setInstance(WebDriver instance) {
+	
+	public static void setInstance(WebDriver instance) {
 			Driver.instance = instance;
 		}
 	

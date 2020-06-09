@@ -7,13 +7,15 @@ import core.Driver;
 import utilis.Helper;
 
 
-public class Header {
+public class HeaderVerifyController {
 	String logout;
+	String login;
 	
-	public Header()
+	public HeaderVerifyController()
 	{
 		try {
 			logout =Helper.load("automationpractice.header.logout.xpath");
+			login = Helper.load("automationpractice.header.login.xpath");
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -26,7 +28,7 @@ public class Header {
 
 	public void signIn()
 	{
-		Driver.findElement(By.xpath("//a[@title='Log in to your customer account']")).click();
+		Driver.findElement(By.xpath(login)).click();
 	}
 	
 }

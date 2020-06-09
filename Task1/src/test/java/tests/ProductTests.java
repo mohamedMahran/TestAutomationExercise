@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import core.Driver;
 import core.WebTable;
-import pages.header.Header;
+import pages.header.HeaderPage;
 import pages.landing.LandingPage;
 import pages.login.LoginPage;
 import pages.menu.MainMenu;
@@ -23,13 +23,14 @@ public class ProductTests extends BaseTest {
 		
 		LoginPage loginPage = LoginPage.getLoginPage();
 		LandingPage landing = LandingPage.getLandingPage();
-		Header header = new Header();
-		MainMenu menu = new MainMenu();
+		HeaderPage header = HeaderPage.getHeaderPage();
+		MainMenu menu = MainMenu.getMainMenuPage();
 		Logger log = Logger.getLogger(ProductTests.class);
 
 		ExtentTestManager.getTest().log(Status.INFO, " Log in as existing customer");
 		log.info("1. Log in as existing customer");
-		header.signIn();
+		header.step()
+					.signIn();
 
 		ExtentTestManager.getTest().log(Status.INFO, " 2. Click *Women* button in the header");
 		log.info("2. Click *Women* button in the header");
@@ -38,7 +39,7 @@ public class ProductTests extends BaseTest {
 				 		.signIn();
 
 		ExtentTestManager.getTest().log(Status.INFO, " 3. Select Category from Menu");
-		menu.selectCategoryFromMenu("WOMEN");
+		menu.step().selectCategoryFromMenu("WOMEN");
 
 		ExtentTestManager.getTest().log(Status.INFO, " 4. Click the product with name Faded Short Sleeve T-shirts");
 		log.info("4. Click the product with name Faded Short Sleeve T-shirts");

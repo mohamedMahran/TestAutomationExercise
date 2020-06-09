@@ -10,6 +10,7 @@ import utilis.ExtentTestManager;
 import utilis.Helper;
 
 public class OrderController {
+	
 	private String confirmMyOrder;
 	private String proceedToTheCheckOut;
 	private String clickByTermOfService;

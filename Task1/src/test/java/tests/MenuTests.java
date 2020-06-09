@@ -18,9 +18,9 @@ public class MenuTests extends BaseTest {
 	@Test(dataProvider = "menuItems")
 	public void testCountsOfProductListForEachMainProduct(String mainProduct, String actualCount) {
 		try {
-			MainMenu menu = new MainMenu();
-			menu.hoverOnTheMainMenu(mainProduct);
-			int expectedCountOfMainProduct = menu.getCountOfProductItemsOf(mainProduct);
+			MainMenu menu = MainMenu.getMainMenuPage();
+			menu.step().hoverOnTheMainMenu(mainProduct);
+			int expectedCountOfMainProduct = menu.check().countOfProductItemsOf(mainProduct);
 			int actualCountOfMainProduct = Integer.parseInt(actualCount);
 			Assert.assertEquals(expectedCountOfMainProduct, actualCountOfMainProduct);
 		} catch (Exception e) {

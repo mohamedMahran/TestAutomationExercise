@@ -35,15 +35,12 @@ public class LandingVerifyController {
 		 Assert.assertEquals(expectedName, Driver.findElement(By.className(account)).getText());
 		 return this;
 	}
-	
 	public LandingVerifyController headerText(String expectedHeader)
 	{
 		String actualHeader=Driver.findElement(By.cssSelector(header)).getText();
 		Assert.assertTrue(actualHeader.contains(expectedHeader));
 		return this;
 	}
-	
-	
 	public LandingVerifyController logOutAvailable()
 	{
 		
@@ -51,7 +48,12 @@ public class LandingVerifyController {
 			 return this;
 		
 	}
-
+	public LandingVerifyController accountInfo(String actual)
+	{
+		String expected=Driver.findElement(By.xpath("//p[@class='info-account']")).getText();
+		Assert.assertEquals(actual, expected);
+		return this;
+	}
 	public void clickOnProduct(String item) {
 
 		try
@@ -64,4 +66,5 @@ public class LandingVerifyController {
 			ExtentTestManager.getTest().log(Status.FAIL, ex);
 		}
 	}
+
 }
