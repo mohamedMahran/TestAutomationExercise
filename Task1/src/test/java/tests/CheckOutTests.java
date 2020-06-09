@@ -1,4 +1,4 @@
-package org.tests;
+package tests;
 
 import java.io.IOException;
 import org.apache.log4j.Logger;
@@ -14,6 +14,7 @@ import pages.order.OrderPage;
 import pages.summary.Summary;
 import utilis.ExcelLib;
 import utilis.ExtentTestManager;
+
 
 public class CheckOutTests extends BaseTest {
 

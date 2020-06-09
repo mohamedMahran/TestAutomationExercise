@@ -1,4 +1,4 @@
-package org.tests;
+package tests;
 	
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
@@ -8,6 +8,7 @@ import pages.header.Header;
 import pages.landing.LandingPage;
 import pages.login.LoginPage;
 import utilis.ExtentTestManager;
+
 	public class LoginTests extends BaseTest {
 		
 
