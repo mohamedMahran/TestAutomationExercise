@@ -10,10 +10,14 @@ import utilis.Helper;
 
 public class ProductVerifyController {
 
-	public ProductVerifyController colorsOfTheProduct() {
-		String[] actualDisplayedColors = {"Orange","Blue"};
-		List<String> expectedDisplayedColors=Helper.getListOfStringsFromListOfElements(Driver.findElements(By.xpath("//ul[@id='color_to_pick_list']/li//a")));
-		Assert.assertEquals(actualDisplayedColors,expectedDisplayedColors);
+	public ProductVerifyController colorsOfTheProduct(String [] expectedColors) {
+		
+		List<String> actualDisplayedColors=Helper.getListOfStringsFromElementListByAttribute(Driver.findElements(By.xpath("//ul[@id='color_to_pick_list']/li//a")),"title");
+		for(int i = 0 ; i < expectedColors.length;i++)
+		{
+		Assert.assertEquals(expectedColors[i],actualDisplayedColors.get(i) );
+		
+		}
 		 return this;
 	}
 

@@ -51,7 +51,7 @@ public class LandingVerifyController {
 	public LandingVerifyController accountInfo(String actual)
 	{
 		String expected=Driver.findElement(By.xpath("//p[@class='info-account']")).getText();
-		Assert.assertEquals(actual, expected);
+		Assert.assertTrue(expected.contains(actual));
 		return this;
 	}
 	public void clickOnProduct(String item) {

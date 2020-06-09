@@ -1,7 +1,6 @@
 package pages.registration;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.List;
 
 import org.openqa.selenium.By;

@@ -159,6 +159,16 @@ public  class Helper {
 		}
         return listOfStringsFromListOfElements;
     }
+	public static List<String> getListOfStringsFromElementListByAttribute(List<WebElement> ilist,String name)
+    {
+		List<String> listOfStringsFromListOfElements = new ArrayList<>();
+		for(WebElement t : ilist)
+		{
+			listOfStringsFromListOfElements.add(t.getAttribute(name));
+			
+		}
+        return listOfStringsFromListOfElements;
+    }
 	public static void hoverOn(WebElement element) throws InterruptedException {
 		Actions builder = new Actions(Driver.getInstance());
 		builder.moveToElement(element).perform();
