@@ -6,8 +6,10 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
 import core.Driver;
@@ -21,7 +23,7 @@ public class BaseTest {
 	static Logger log = Logger.getLogger(BaseTest.class);
 	
 	@Parameters("browser")
-	@BeforeClass
+	@BeforeTest
 	public  void setUp(String browser) 
 	{
 
@@ -46,7 +48,7 @@ public class BaseTest {
 		}
 	}
 
-	@AfterClass
+	@AfterTest
 	public void tearDown() {
 		Driver.destoryDriver();
 	}

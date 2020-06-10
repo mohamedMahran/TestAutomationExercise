@@ -12,11 +12,9 @@ import pages.registration.Register;
 public class RegistrationTest extends BaseTest{
 	
 	@Test(dataProvider="accountInformation")
-	public void validateNewAccount(String firstName,String surName,String passwod,String company,
-								  String days,String month,String year,
-								  String address1,String address2,String city,
-								  String state,
-								  String postcode,String other,String phone,String mobilePhone,String alias) throws IOException 
+	public void validateNewAccount(String firstName,String surName,String passwod,String company,String days,String month,String year,
+								  String address1,String address2,String city,String state,String postcode,String other,
+								  String phone,String mobilePhone,String alias) throws IOException 
 	{
 		HeaderPage header = HeaderPage.getHeaderPage();
 		Register  registerPage =Register.getRegisterPage();
@@ -35,7 +33,7 @@ public class RegistrationTest extends BaseTest{
 		landing.check().accountInfo("Welcome to your account.")
 					  .fullName(firstName + " " + surName)
 					  .logOutAvailable();
-		
+		header.step().signOut();
 	}
 	@DataProvider(name="accountInformation")
 	public Object[][] accountInformation()

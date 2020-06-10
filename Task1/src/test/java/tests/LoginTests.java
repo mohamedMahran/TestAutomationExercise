@@ -44,7 +44,7 @@ import utilis.ExtentTestManager;
 				landing.check().fullName("Joe Black")
 				   .headerText("MY ACCOUNT")
 				   .logOutAvailable();
-				
+				header.step().signOut();
 
 			log.info("Navigation Bar is displayed");
 			log.info("Test completed");

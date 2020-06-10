@@ -1,9 +1,6 @@
 package tests;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import pages.login.LoginPage;
 import org.testng.annotations.DataProvider;
@@ -54,12 +51,10 @@ public class CheckOutTests extends BaseTest {
 			landing.step().clickOnProduct(productName);
 			ExtentTestManager.getTest().log(Status.INFO, " 3. Click the product with name Faded Short Sleeve T-shirts");
 			
- 			log.info("4. Select Size,Enter Quantity then click add to cart");
+ 			log.info("4.Verify then Select Size,Enter Quantity then click add to cart");
  			
  			
  			String[] expectedDisplayedColors = {"Orange","Blue"};
- 			
-			
  			product.check().colorsOfTheProduct(expectedDisplayedColors)
 						   .countOfSocialSharingProduct();
 			

@@ -16,7 +16,6 @@ import com.aventstack.extentreports.Status;
 
 import core.Driver;
 
-
 public  class Helper {
 	
 	private Helper()
@@ -159,12 +158,12 @@ public  class Helper {
 		}
         return listOfStringsFromListOfElements;
     }
-	public static List<String> getListOfStringsFromElementListByAttribute(List<WebElement> ilist,String name)
+	public static List<String> getListOfStringsFromElementListByAttribute(List<WebElement> ilist,String attribute)
     {
 		List<String> listOfStringsFromListOfElements = new ArrayList<>();
 		for(WebElement t : ilist)
 		{
-			listOfStringsFromListOfElements.add(t.getAttribute(name));
+			listOfStringsFromListOfElements.add(t.getAttribute(attribute));
 			
 		}
         return listOfStringsFromListOfElements;
