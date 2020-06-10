@@ -39,6 +39,7 @@ public class Driver {
 
 		return getInstance();
 	}
+
 	public static WebDriver getInstance() {
 		return instance;
 	}

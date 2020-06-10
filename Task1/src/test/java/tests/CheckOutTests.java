@@ -33,7 +33,8 @@ public class CheckOutTests extends BaseTest {
 			
 			
 			log.info("1. Log in as existing customer");
-			header.step().signIn();
+			header.step().
+						  signIn();
 			ExtentTestManager.getTest().log(Status.INFO, " 1. Log in as existing customer");
 			log.info("2. Click *Women* button in the header");
 			loginPage.step().enterUserEmailAddress()
@@ -59,10 +60,11 @@ public class CheckOutTests extends BaseTest {
 						   .countOfSocialSharingProduct();
 			
 			product.step().enterQuantity("5")
-				   .selectSize(size)
-				   .addToCart();
+				   		  .selectSize(size)
+				   		  .addToCart();
 			log.info("5. Click *Proceed to checkout*");
-			product.step().click("Proceed to checkout");
+			product.step()
+						.click("Proceed to checkout");
 			ExtentTestManager.getTest().log(Status.INFO, " 6. Click *Proceed to checkout*");
 			
 			log.info("7. Click *Proceed to checkout*");
