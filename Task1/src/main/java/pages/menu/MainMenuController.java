@@ -14,8 +14,6 @@ public class MainMenuController {
 
 	String menuList;
 
-	
-	
 	public MainMenuController()
 	{
 	try 
@@ -27,8 +25,6 @@ public class MainMenuController {
 			ExtentTestManager.getTest().log(Status.FAIL, e.getMessage());
 		}
 	}
-
-
 	private List<WebElement> getMenuItems()
 	{
 		return Driver.findElements(By.cssSelector(menuList));

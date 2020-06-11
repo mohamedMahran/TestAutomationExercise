@@ -2,9 +2,10 @@ package pages.product;
 
 import java.util.List;
 import org.openqa.selenium.By;
+import org.testng.Assert;
+
 import core.Driver;
 import core.WebTable;
-import junit.framework.Assert;
 import utilis.Helper;
 
 public class ProductVerifyController {
