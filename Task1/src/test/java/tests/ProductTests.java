@@ -12,7 +12,6 @@ import pages.menu.MainMenu;
 import pages.product.Product;
 import utilis.ExtentTestManager;
 
-
 public class ProductTests extends BaseTest {
 	
 	@Test
