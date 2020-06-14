@@ -21,7 +21,7 @@ public class CheckOutTests extends BaseTest {
 	@Test(dataProvider = "checkOut")
 	public void validateCheckoutProcess(String productName, String size)   {
 		try {
-
+			// create test script for the checkout test
 			Logger log = Logger.getLogger(CheckOutTests.class);
 			LoginPage loginPage = LoginPage.getLoginPage();
 			HeaderPage header = HeaderPage.getHeaderPage();
