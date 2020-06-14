@@ -9,7 +9,7 @@
     	<classes>
     		<class name="tests.CheckOutTests"/> 
 <!--           	<class name="tests.RegistrationTest"/>     -->
-           	<class name="tests.MenuTests"/>       
+<!--            	<class name="tests.MenuTests"/>        -->
 <!--       		<class name="tests.ProductTests"/>         -->
 <!--        		<class name="tests.LoginTests"/>          -->
     	</classes> 
